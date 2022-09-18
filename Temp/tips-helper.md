@@ -1,13 +1,22 @@
+---
+title: Helper
+
+tags:
+
+- tips
+
+---
+
 # CMD
 
 ## 关闭java进程
 
 ```
-netstat -aon|findstr "8080" 
+netstat -aon|findstr "8080"
 taskkill -PID 8372 -F
 ```
 
-##控制面板-卸载程序
+## 控制面板-卸载程序
 
 ```
 appwiz.cpl
@@ -30,17 +39,13 @@ ipconfig /flushdns
 
 ## 整合leetcode edit
 
-
-
->CodeFileNam
+> CodeFileNam
 
 ```
 $!velocityTool.camelCaseName(${question.titleSlug})/$!velocityTool.camelCaseName(${question.titleSlug})
 ```
 
-
-
->CodeTemplate
+> CodeTemplate
 
 ```
 ${question.content}
@@ -60,8 +65,6 @@ public class $!velocityTool.camelCaseName(${question.titleSlug}) {
 
 ${question.code}
 ```
-
-
 
 ```PlantUML integration ```
 
@@ -89,11 +92,10 @@ ${question.code}
 
 分割线 --- ***
 
-图片 ! [ 图片alt ] ( 图片地址 “图片title” ) ![desc](https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=702257389,1274025419&fm=27&gp=0.jpg "title")
+图片 ! [ 图片alt ] ( 图片地址
+“图片title” ) ![desc](https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=702257389,1274025419&fm=27&gp=0.jpg "title")
 
-
-
-##  超链接
+## 超链接
 
 超链接 [ 超链接名 ] (超链接地址 “超链接title”)
 
@@ -108,8 +110,8 @@ ${question.code}
 无序列表 - + *
 
 - 1
-  + 2
-    * 3
+    + 2
+        * 3
 
 有序列表 1. 2. 3.
 
@@ -121,23 +123,15 @@ ${question.code}
 
 1. 标题
 
-   * tab
-
-   
+    * tab
 
 ## 表格
-
-
 
 |表头|表头|表头|
 
 |-|:-:|-:|
 
-|正常|居中|居右|
-||||
-||
-
-
+|正常|居中|居右| |||| ||
 
 代码 `代码`
 
@@ -149,9 +143,8 @@ ${question.code}
 ​```
 ````
 
-
-
 ## 流程图
+
 横向流程图
 
 ```mermaid
@@ -163,12 +156,8 @@ C -->|a=2| E[结果2]
 F[横向流程图]
 ```
 
-
-
-
-
-
 竖向流程图
+
 ```mermaid
 graph TD
 A[方形] -->B(圆角)
@@ -179,6 +168,7 @@ F[竖向流程图]
 ```
 
 普通流程图
+
 ```flow
 st=>start: 开始框
 op=>operation: 处理框
@@ -192,6 +182,7 @@ cond(no)->sub1(right)->op
 ```
 
 UML时序图源码样例：
+
 ```sequence
 对象A->对象B: 对象B你好吗?（请求）
 Note right of 对象B: 对象B的描述
@@ -222,15 +213,12 @@ b1{带文本菱形}
 c1((带文本圆形))
 ```
 
-
-
 # regular
-
-
 
 ## 常用实例
 
 ### 匹配第10次出现的逗号
+
 ```
 (([^,]*,){10})
 ```
@@ -243,4 +231,3 @@ VALUES (([^,]*,){12})(([^\']*\'){1})([^\']*)
 VALUES $1 '{"zh-CN":"$5","en-US":"welcome"}
 
 ```
-
