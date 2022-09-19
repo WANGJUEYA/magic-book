@@ -1,3 +1,14 @@
+---
+title: Markdown
+
+date: 2022-09-19
+
+tags:
+
+- markdown
+
+---
+
 # 一级标题 ’#‘
 
 ###### 六级标题 ’######‘
@@ -18,9 +29,8 @@
 
 分割线 --- ***
 
-图片 ! [ 图片alt ] ( 图片地址 “图片title” ) ![desc](https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=702257389,1274025419&fm=27&gp=0.jpg "title")
-
-
+图片 ! [ 图片alt ] ( 图片地址
+“图片title” ) ![desc](https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=702257389,1274025419&fm=27&gp=0.jpg "title")
 
 超链接 [ 超链接名 ] (超链接地址 “超链接title”)
 
@@ -35,8 +45,8 @@
 无序列表 - + *
 
 - 1
-  + 2
-    * 3
+    + 2
+        * 3
 
 有序列表 1. 2. 3.
 
@@ -48,23 +58,15 @@
 
 1. 标题
 
-   * tab
-
-   
+    * tab
 
 表格
-
-
 
 |表头|表头|表头|
 
 |-|:-:|-:|
 
-|正常|居中|居右|
-||||
-||
-
-
+|正常|居中|居右| |||| ||
 
 代码 `代码`
 
@@ -76,10 +78,8 @@
 ​```
 ```
 
+流程图 横向流程图
 
-
-流程图
-横向流程图
 ```mermaid
 graph LR
 A[方形] -->B(圆角)
@@ -89,12 +89,8 @@ C -->|a=2| E[结果2]
 F[横向流程图]
 ```
 
-
-
-
-
-
 竖向流程图
+
 ```mermaid
 graph TD
 A[方形] -->B(圆角)
@@ -105,6 +101,7 @@ F[竖向流程图]
 ```
 
 普通流程图
+
 ```flow
 st=>start: 开始框
 op=>operation: 处理框
@@ -118,6 +115,7 @@ cond(no)->sub1(right)->op
 ```
 
 UML时序图源码样例：
+
 ```sequence
 对象A->对象B: 对象B你好吗?（请求）
 Note right of 对象B: 对象B的描述
