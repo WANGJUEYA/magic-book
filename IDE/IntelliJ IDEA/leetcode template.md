@@ -1,3 +1,15 @@
+---
+title: Leetcode idea plugin template
+
+date: 2022-09-18 13:11:00
+
+tags:
+
+- IDEA
+- Leetcode
+
+---
+
 ```
 D:\code\basic-java\src\main\java\com\jue\java\learn
 ```
