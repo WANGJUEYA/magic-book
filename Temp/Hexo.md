@@ -68,6 +68,7 @@ theme: christmas-tree
     + [christmas-tree](https://wangjueya.github.io/) ☞ ```https://github.com/WANGJUEYA/hexo-theme-christmas-tree.git```
     + [Theme Yuzu](https://cerallin.github.io/) ☞ ```https://github.com/Cerallin/hexo-theme-yuzu.git```
     + [tree](https://wujun234.com/) ☞ ```https://github.com/wujun234/hexo-theme-tree.git```
+    + [fluid](https://hexo.fluid-dev.com/) ```https://github.com/fluid-dev/hexo-theme-fluid```
 
 ### 图片存储 `post_asset_folder`
 
