@@ -20,6 +20,17 @@ Hexo | Github 自定义博客生成工具
 
 <!--more-->
 
+## 快捷启动项目方式
+
+> 需要环境 `git` `npm`
+
+``` bash
+$ git clone git@github.com:WANGJUEYA/B612-Factory.git --recursive
+$ cd B612-Factory.git
+$ npm install
+$ npm run server
+```
+
 ## [hexo安装](https://hexo.io/zh-cn/)
 
 + [npm安装全局组件](TODO/npm/)
@@ -180,8 +191,6 @@ deploy:
 ```
 
 + 点击发布即可 (gitee需要在`Gitee Pages 服务`手动更新)
-
-## 永久链接格式
 
 ## 参考链接
 
