@@ -1,6 +1,6 @@
 ---
 title: Hexo
-excerpt: Hexo | Github 自定义博客生成工具
+summary: Hexo | Github 自定义博客生成工具
 date: 2022-09-17 16:27:00
 tags:
 - hexo
@@ -72,7 +72,6 @@ $ hexo new [layout] <title>
 | updated    | 文件更新日期            | 更新日期 |
 | tags       | -                     | 标签（不适用于分页）；没有顺序和层次 |
 | categories | -                     | 分类（不适用于分页）；具有顺序性和层次性 |
-| excerpt    | -                     | 文章的摘要 |
 
 #### 示例
 
@@ -92,7 +91,7 @@ tags:
 
 #### 摘要补充
 
-+ Front-matter excerpt
++ Front-matter summary|excerpt
 + 文章需要截断的地方增加 `<!--more-->`，首页就会显示这条指令以上的所有内容，隐藏接下来的所有内容
 
 ## [更多配置](https://hexo.io/zh-cn/docs/configuration)
