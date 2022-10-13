@@ -138,7 +138,7 @@ yarn add package
 
 * mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc14 -Dversion=10.2.0.2.0 -Dpackaging=jar -Dfile=E:\oracle\ojdbc14-10.2.0.2.0.jar
 
-# negix
+# nginx
 
 * <span style="color:red;">start nginx</span> 开启nginx
 
@@ -157,7 +157,7 @@ yarn add package
 * <span style="color:red;">nginx -v</span> 显示 nginx 的版本
 
 
-# negix
+# nginx
 
 * start nginx 开启nginx
 
