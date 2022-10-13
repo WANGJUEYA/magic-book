@@ -17,25 +17,13 @@ Hexo | Github 自定义博客生成工具
 
 <!--more-->
 
-## 快捷启动项目方式
-
-> 需要环境 `git` `npm`
-
-``` bash
-$ git clone git@github.com:WANGJUEYA/B612-Factory.git --recursive
-$ cd B612-Factory.git
-$ npm install
-$ npm run server
-```
-
-+ 如果本地ssh密钥不为空会有 `Permission denied`报错, 手动更新或者使用 git-bash 客户端即可
-
 ## [hexo安装](https://hexo.io/zh-cn/)
 
 + [npm安装全局组件](TODO/npm/)
 
 ``` bash
 $ npm install hexo-cli -g
+$ npm install yarn -g
 ```
 
 + [初始化项目](https://hexo.io/docs/writing.html)
@@ -208,6 +196,20 @@ deploy:
 ```
 
 + 点击发布即可 (gitee需要在`Gitee Pages 服务`手动更新)
+
+## 快捷启动可用项目
+
+> 需要环境 `git` `npm`
+
+``` bash
+$ git clone git@github.com:WANGJUEYA/B612-Factory.git --recursive
+$ cd B612-Factory.git
+$ npm install
+$ npm run server
+```
+
++ 如果本地ssh密钥不为空会有 `Permission denied`报错, 使用 git-bash 客户端
++ 用自己的markdown文件替换 `./source/_posts` 下所有文件
 
 ## 参考链接
 
