@@ -1,3 +1,7 @@
+---
+categories:
+  - Temp
+---
 下载mc工具
 
 ```shell

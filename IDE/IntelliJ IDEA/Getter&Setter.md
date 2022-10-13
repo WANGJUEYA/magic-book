@@ -1,8 +1,13 @@
+---
+categories:
+  - IDE
+  - IntelliJ IDEA
+---
 # 构造方法快速生成get set 方法代码模板
 
 ## customGetter
 
-```java
+```thymeleaftemplatesfragmentexpressions
 #if($field.modifierStatic)
 static ##
 #end
@@ -15,7 +20,7 @@ return $field.name;
 
 ## customSetter
 
-```java
+```thymeleaftemplatesfragmentexpressions
 #set($paramName = $helper.getParamName($field, $project))
 public ##
 #if($field.modifierStatic)

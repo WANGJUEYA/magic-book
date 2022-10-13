@@ -1,13 +1,11 @@
 ---
 title: EJS
-
-date: 2022-09-19 21:38:31
-
 tags:
-
-- EJS
-- js
-
+  - EJS
+  - js
+categories:
+  - 模板引擎
+date: 2022-09-19 21:38:31
 ---
 
 # [EJS](https://ejs.bootcss.com/#docs)

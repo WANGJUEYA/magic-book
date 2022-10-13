@@ -1,13 +1,12 @@
 ---
 title: Leetcode idea plugin template
-
-date: 2022-09-18 13:11:00
-
 tags:
-
-- IDEA
-- Leetcode
-
+  - IDEA
+  - Leetcode
+categories:
+  - IDE
+  - IntelliJ IDEA
+date: 2022-09-18 13:11:00
 ---
 
 ```

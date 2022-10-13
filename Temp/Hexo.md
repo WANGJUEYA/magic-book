@@ -1,19 +1,16 @@
 ---
 title: Hexo
-
+excerpt: Hexo | Github 自定义博客生成工具
 date: 2022-09-17 16:27:00
-
 tags:
-
 - hexo
 - node
 - npm
 - git
 - gitee
 - github
-
-excerpt: Hexo | Github 自定义博客生成工具
-
+categories:
+- Temp
 ---
 
 Hexo | Github 自定义博客生成工具
@@ -152,10 +149,28 @@ theme: christmas-tree
 
 + 使用 markdown 和 hexo 均支持的相对路径
 
-安装插件, 图片引用方式 `![name](title/example.jpg)`
+安装插件
 
 ``` bash
 $ yarn add hexo-image-link
+```
+
+```![image file label]（markdown-file-name/local-image.png） -> {% asset_img label local-image.png %}```
+
+![图片引用](Hexo/example.jpg "图片引用")
+
+
+### 自动将目录生成分类
+
+``` bash
+$ yarn add hexo-auto-category
+```
+
+```yml
+# hexo-auto-category
+auto_category:
+  enable: true
+  depth:
 ```
 
 ## git发布

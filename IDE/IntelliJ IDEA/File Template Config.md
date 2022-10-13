@@ -1,12 +1,11 @@
 ---
 title: File Template Config
-
-date: 2022-09-19 21:33:26
-
 tags:
-
-- IDEA
-
+  - IDEA
+categories:
+  - IDE
+  - IntelliJ IDEA
+date: 2022-09-19 21:33:26
 ---
 
 > Settings > Editor > File and Code Templates

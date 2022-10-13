@@ -1,3 +1,8 @@
+---
+categories:
+  - TOEXE
+  - swagger升级(配置密码)
+---
 > 三方依赖包
 
 1. 增加包版本

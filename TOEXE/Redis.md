@@ -1,3 +1,7 @@
+---
+categories:
+  - TOEXE
+---
 # Redis 五种数据结构
 
 + String

@@ -1,3 +1,7 @@
+---
+categories:
+  - Temp
+---
 ```
     @GetMapping("/download")
     public void download(@ApiParam(value = "下载的id", required = true)

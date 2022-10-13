@@ -1,3 +1,8 @@
+---
+categories:
+  - 操作系统
+  - Windows Server
+---
 # LADP
 
 1. Lightweight Directory Access Protocol; 基于目录服务的轻量目录访问协议

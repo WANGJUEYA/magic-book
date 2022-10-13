@@ -1,3 +1,8 @@
+---
+categories:
+  - 操作系统
+  - VMware
+---
 # VMwareWorkstations 虚拟机网络配置连接方式: 桥接、仅主机、NAT、LAN区段
 
 ## 桥接模式
