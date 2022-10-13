@@ -31,6 +31,8 @@ $ npm install
 $ npm run server
 ```
 
++ 如果本地ssh密钥不为空会有 `Permission denied`报错, 手动更新或者使用 git-bash 客户端即可
+
 ## [hexo安装](https://hexo.io/zh-cn/)
 
 + [npm安装全局组件](TODO/npm/)
