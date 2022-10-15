@@ -196,6 +196,10 @@ deploy:
 
 + 点击发布即可 (gitee需要在`Gitee Pages 服务`手动更新)
 
+## 自定义插件
+
++ [hexo 教程之为 hexo 编写一个插件](https://blog.csdn.net/godread_cn/article/details/122031503)
+
 ## 快捷启动可用项目
 
 > 需要环境 `git` `npm`

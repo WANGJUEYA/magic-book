@@ -9,7 +9,13 @@ categories:
 date: 2022-10-15 13:44:53
 ---
 
+官方文档: https://easyexcel.opensource.alibaba.com/docs/current/
+
 ## 代码示例
+
+### Excel限制下拉框文本长度不能超过 255, 新建一个sheet存储下拉框
+
+https://github.com/alibaba/easyexcel/issues/1138
 
 ### 构造多页签主子表数据
 

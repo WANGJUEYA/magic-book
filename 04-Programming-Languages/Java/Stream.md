@@ -10,6 +10,7 @@ categories:
 date: 2022-10-15 13:26:21
 ---
 
+热门实例: https://www.w3cschool.cn/java/codetag-stream-lambda.html
 
 ## 问题验证
 

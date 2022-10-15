@@ -31,3 +31,7 @@ npx serve -d
 yarn remove package
 yarn add package # 新增升级都用该命令
 ```
+
+## 使用本地依赖
+
++ [Node.js使用本地依赖](https://www.cnblogs.com/blacklsle/p/14787684.html)
