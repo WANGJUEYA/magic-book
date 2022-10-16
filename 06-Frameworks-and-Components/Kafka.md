@@ -5,6 +5,8 @@ summary: Kafka部署及spring集成
 tags:
   - kafka
   - spring
+categories:
+  - 06-Frameworks-and-Components
 date: 2022-10-16 10:43:30
 ---
 

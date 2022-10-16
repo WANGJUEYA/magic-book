@@ -4,6 +4,9 @@ keywords: Spark
 summary: Spark
 tags:
   - Spark
+categories:
+  - 06-Frameworks-and-Components
+  - Big-Data
 date: 2022-10-16 11:15:26
 ---
 

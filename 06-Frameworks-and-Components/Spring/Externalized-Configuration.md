@@ -1,10 +1,13 @@
 ---
 title: Spring配置优先级规则
-date: 2022-10-16 10:29:45
 keywords: Spring配置优先级规则
 summary: Spring配置优先级规则
 tags:
-    - spring
+  - spring
+categories:
+  - 06-Frameworks-and-Components
+  - Spring
+date: 2022-10-16 10:29:45
 ---
 
 官网解释: https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config
