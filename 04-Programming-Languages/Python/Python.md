@@ -29,11 +29,11 @@ __foo__ 特殊方法专用标识 __init__() 构造函数
 
 成员属性(字段)/实例属性(map)/类属性(静态公有变量)
 
-![图片](./Python/Python属性解释.png)
+![图片](Python/Python属性解释.png)
 
 关键字
 
-![图片](./Python/Python关键字.png)
+![图片](Python/Python关键字.png)
 
 数据类型(5)
 

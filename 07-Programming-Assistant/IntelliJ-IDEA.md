@@ -37,9 +37,15 @@ HKEY_CURRENT_USER\Software\JavaSoft\Prefs\jetbrains\*
 
 ### Git在信息栏中显示本地修改
 
-File > Settings > Version Control > Commit > Use non-modal commit interface
+File > Settings > Version Control > Commit -> Use non-modal commit interface
 
 取消勾选上述选项
+
+### 版本管理本地修改在文件夹路径中体现
+
+File > Settings > Version Control -> Show directories with changed descendants
+
+勾选上述选项
 
 ### 根据文件类型调整生成的模板(eg. 新建java文件时带上作者名)
 
@@ -145,4 +151,4 @@ ${question.code}
 
 ### 项目maven构建成功但是启动失败的解决(统一构建环境与启动环境)
 
-![image](IntelliJ IDEA/mavenProjectError.png)
+![image](IntelliJ-IDEA/mavenProjectError.png)

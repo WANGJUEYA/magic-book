@@ -6,6 +6,7 @@ tags:
   - redis
 categories:
   - 06-Frameworks-and-Components
+  - Database
 date: 2022-10-15 13:23:30
 ---
 ## Redis 五种数据结构

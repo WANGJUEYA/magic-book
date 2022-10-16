@@ -144,7 +144,7 @@ $ yarn add hexo-image-link
 
 ```![image file label]（markdown-file-name/local-image.png） -> {% asset_img label local-image.png %}```
 
-![图片引用](source/_posts/07 Programming Assistant/Hexoce/_posts/07 Programming Assistant/Hexo/example.jpg "图片引用")
+![图片引用](Hexo/example.jpg "图片引用")
 
 
 ### 自动将目录生成分类
