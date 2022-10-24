@@ -340,6 +340,20 @@ $ ssh-keygen -t rsa -C "{注册邮箱地址}"
 
 ## github
 
+### GitHub Action
+
+官方文档: https://docs.github.com/en/actions/quickstart
+
+#### 利用 GitHub Action 实现仓库同步
+```yaml
+
+```
+
+#### 利用 GitHub Action 实现网站发布
+```yaml
+
+```
+
 ## gitee
 
 开发者文档 https://gitee.com/api/v5/swagger#/postV5UserRepos
