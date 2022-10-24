@@ -13,7 +13,11 @@ jobs:
       - name: Push Mirror
         env:
           PARENT_REPOSITORY: 'git@github.com:WANGJUEYA/B612-Factory.git'
+          USER_NAME: 'wangjueya_ci'
+          USER_EMAIL: '573711282@qq.com'
         run: |
+          git config --global user.name "$USER_NAME"
+          git config --global user.email "$USER_EMAIL"
           git clone "$PARENT_REPOSITORY" Repository --recursive
           cd Repository
           git submodule update --remote
