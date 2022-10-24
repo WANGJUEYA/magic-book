@@ -9,12 +9,13 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          cat ~/.ssh/id_rsa
-          echo "StrictHostKeyChecking no" >> ~/.ssh/config
-          cat ~/.ssh/config
-          ssh-keygen -f ~/.ssh/id_rsa -y > ~/.ssh/id_rsa.pub
+      - run: echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+      - run: chmod 600 ~/.ssh/id_rsa
+      - run: echo "🍏 This SSH_PRIVATE_KEY is ${{ secrets.SSH_PRIVATE_KEY }}."
+      - run: cat ~/.ssh/id_rsa
+      - run: echo "StrictHostKeyChecking no" >> ~/.ssh/config
+      - run: cat ~/.ssh/config
+      - run: ssh-keygen -f ~/.ssh/id_rsa -y > ~/.ssh/id_rsa.pub
       - name: Push Mirror
         env:
           PARENT_REPOSITORY: 'git@github.com:WANGJUEYA/B612-Factory.git'
