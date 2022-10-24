@@ -8,6 +8,7 @@ categories:
   - 04-Programming-Languages
   - JavaScript
 date: 2022-10-18 10:59:47
+updated: 2022-10-19 18:03:47
 ---
 
 官方文档 https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#object-types
@@ -35,6 +36,7 @@ date: 2022-10-18 10:59:47
 |class|Class|TypeScript实现了 `class` 关键字 <br> [扩展使用](https://www.typescriptlang.org/docs/handbook/2/classes.html#class-members)||
 
 #### 元组使用详情
+
 ```ts
 let x: [string, number]; // Declare a tuple type
 // Initialize it
@@ -114,30 +116,33 @@ enum FileAccess {
   G = "123".length,
 }
 ```
+
 ```ts
 enum LogLevel {
-  ERROR,
-  WARN,
-  INFO,
-  DEBUG,
+    ERROR,
+    WARN,
+    INFO,
+    DEBUG,
 }
- 
+
 /**
  * This is equivalent to:
  * type LogLevelStrings = 'ERROR' | 'WARN' | 'INFO' | 'DEBUG';
  */
 type LogLevelStrings = keyof typeof LogLevel;
- 
+
 function printImportant(key: LogLevelStrings, message: string) {
-  const num = LogLevel[key];
-  if (num <= LogLevel.WARN) {
-    console.log("Log level key is:", key);
-    console.log("Log level value is:", num);
-    console.log("Log level message is:", message);
-  }
+    const num = LogLevel[key];
+    if (num <= LogLevel.WARN) {
+        console.log("Log level key is:", key);
+        console.log("Log level value is:", num);
+        console.log("Log level message is:", message);
+    }
 }
+
 printImportant("ERROR", "This is a message");
 ```
+
 #### 对象的使用详情
 In JavaScript, the fundamental way that we group and pass around data is through objects. In TypeScript, we represent those through *object types*.
 
@@ -146,7 +151,7 @@ As we’ve seen, they can be anonymous:
 ```
 function greet(person: { name: string; age: number }) {
   return "Hello " + person.name;
-}Try
+}
 ```
 
 or they can be named by using either an interface
@@ -159,7 +164,7 @@ interface Person {
  
 function greet(person: Person) {
   return "Hello " + person.name;
-}Try
+}
 ```
 
 or a type alias.
@@ -172,7 +177,7 @@ type Person = {
  
 function greet(person: Person) {
   return "Hello " + person.name;
-}Try
+}
 ```
 
 In all three examples above, we’ve written functions that take objects that contain the property `name` (which must be a `string`) and `age` (which must be a `number`).
@@ -189,3 +194,107 @@ You’ll learn more about these concepts in later chapters, so don’t worry if 
 - Interface names will [*always* appear in their original form](https://www.typescriptlang.org/play?#code/PTAEGEHsFsAcEsA2BTATqNrLusgzngIYDm+oA7koqIYuYQJ56gCueyoAUCKAC4AWHAHaFcoSADMaQ0PCG80EwgGNkALk6c5C1EtWgAsqOi1QAb06groEbjWg8vVHOKcAvpokshy3vEgyyMr8kEbQJogAFND2YREAlOaW1soBeJAoAHSIkMTRmbbI8e6aPMiZxJmgACqCGKhY6ABGyDnkFFQ0dIzMbBwCwqIccabcYLyQoKjIEmh8kwN8DLAc5PzwwbLMyAAeK77IACYaQSEjUWY2Q-YAjABMAMwALA+gbsVjNXW8yxySoAADaAA0CCaZbPh1XYqXgOIY0ZgmcK0AA0nyaLFhhGY8F4AHJmEJILCWsgZId4NNfIgGFdcIcUTVfgBlZTOWC8T7kAJ42G4eT+GS42QyRaYbCgXAEEguTzeXyCjDBSAAQSE8Ai0Xsl0K9kcziExDeiQs1lAqSE6SyOTy0AKQ2KHk4p1V6s1OuuoHuzwArMagA) in error messages, but *only* when they are used by name.
 
 For the most part, you can choose based on personal preference, and TypeScript will tell you if it needs something to be the other kind of declaration. If you would like a heuristic, use `interface` until you need to use features from `type`.
+
+## 应用实例
+
+### 根据不同后端环境切换接口集
+
+#### 应用场景
+
++ 前端使用同样的代码, 接口区分单体/微服务, 故需要根据配置使用不用的接口文档
++ vue2 升级到 vue3 保证语法规范且尽量少的修改
+
+#### vue2使用样例
+
+```js
+// 全局参数
+const path = process.env.VUE_APP_SERVER_TYPE
+const system = require('@api/api-' + path)
+module.exports = system
+// import { demoUrl } from '@/api/api'
+```
+
+#### require/exports和import/export的区别
+
+require/exports和import/export https://blog.csdn.net/xiaoxiaoluckylucky/article/details/118437651
+require/exports与import/export，有啥不一样的 https://blog.51cto.com/u_15089765/2600897
+
+# 方式1: 定义所有接口, 根据变量动态加载
+
+```ts
+// 需要导出default才能被外部直接用 {使用}
+// export const defaultApi: PlatformApi = import.meta.env.VITE_GLOB_APP_SERVER_TYPE === 'vue' ? apiVue : apiCloud;
+const defaultApi: PlatformApi =
+    import.meta.env.VITE_GLOB_APP_SERVER_TYPE === 'vue' ? apiVue : apiCloud;
+export default defaultApi;
+
+export interface PlatformApi {
+    demoUrl?: string
+}
+```
+
+```ts
+// ROORO: No matching export in "src/api/api.ts" for import "demoUrl"
+import {demoUrl} from '/@/api/api';
+import defaultApi from '/@/api/api';
+
+const {demoUrl} = defaultApi
+console.log(defaultApi.demoUrl)
+```
+
++ 使用时需要通过`defaultApi`对象二次导入
+
+# 方式2 替换构建路径
+
+vite.config.ts
+
+```ts
+export default ({command, mode}: ConfigEnv): UserConfig => {
+    const {VITE_GLOB_APP_SERVER_TYPE} = viteEnv;
+    return {
+        resolve: {
+            alias: [
+                {
+                    // '/@/api/api' 该路径过于常用, 会覆盖别的匹配模式
+                    find: '/@/api/api-zh',
+                    replacement: `${pathResolve('src')}/api/api-${VITE_GLOB_APP_SERVER_TYPE}`,
+                },
+            ],
+        },
+    };
+};
+```
+
+```ts
+import {demoUrl} from 'api-zh';
+```
+
++ 方法名有写错的风险
+
+# 方式3 moduleSuffixes
+
+moduleSuffixes https://www.typescriptlang.org/tsconfig#moduleSuffixes
+
+tsconfig.json
+
+```json
+{
+  "compilerOptions": {
+    "moduleSuffixes": [
+      ".service-vue",
+      ".service-cloud",
+      ""
+    ]
+  }
+}
+```
+
++ 原来的文件改名为 api.service-vue&api.service-cloud
++ 引用正常引用即可 `官方提示需要 import * as Api from '/@/api/api';`
+
+```js
+import {demoUrl} from '/@/api/api';
+```
+
++ 版本 typescript 4.7.0+ & node16+ ; 舍弃
+

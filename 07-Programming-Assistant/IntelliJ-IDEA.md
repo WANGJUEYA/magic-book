@@ -152,3 +152,13 @@ ${question.code}
 ### 项目maven构建成功但是启动失败的解决(统一构建环境与启动环境)
 
 ![image](IntelliJ-IDEA/mavenProjectError.png)
+
+### TypeError: this.cliEngineCtor is not a constructor
+
++ 点击detail, 打开安装路径下`eslint-plugin.js`文件
++ 修改文件(需要管理员权限) `this.cliEngineCtor`
+```js
+// this.cliEngineCtor = requireInContext(eslintPackagePath + "lib/api", state.packageJsonPath).CLIEngine;
+this.cliEngineCtor = requireInContext(eslintPackagePath + "lib/cli-engine", state.packageJsonPath).CLIEngine;
+```
++ 重启项目
