@@ -24,3 +24,13 @@ jobs:
           git add *
           git commit -m ":construction_worker: Auto Sync"
           git push
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - uses: c-hive/gha-yarn-cache@v1
+      - name: Yarn install
+        run: yarn install
+      - name: Hexo deploy
+        run: yarn run deploy
