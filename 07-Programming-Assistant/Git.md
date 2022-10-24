@@ -361,13 +361,68 @@ GitHub Action构建时出现
 
 #### 利用 GitHub Action 实现仓库同步
 ```yaml
-
+name: Sync To Parent Repository
+on: [ push, delete, create ]
+jobs:
+  git-mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure Private Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          echo "StrictHostKeyChecking no" >> ~/.ssh/config
+      - name: Push Mirror
+        env:
+          PARENT_REPOSITORY: 'git@github.com:WANGJUEYA/B612-Factory.git'
+          USER_NAME: 'wangjueya_ci'
+          USER_EMAIL: '573711282@qq.com'
+        run: |
+          git config --global user.name "$USER_NAME"
+          git config --global user.email "$USER_EMAIL"
+          git clone "$PARENT_REPOSITORY" Repository --recursive
+          cd Repository
+          git submodule update --remote
+          git add *
+          git commit -m ":construction_worker: Auto Sync"
+          git push
 ```
 
 #### 利用 GitHub Action 实现网站发布
 ```yaml
-
+name: Sync To Parent Repository
+on: [ push, delete, create ]
+jobs:
+  hexo-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure Private Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          echo "StrictHostKeyChecking no" >> ~/.ssh/config
+      - name: git config
+        env:
+          USER_NAME: 'wangjueya_ci'
+          USER_EMAIL: '573711282@qq.com'
+        run: |
+          git config --global user.name "$USER_NAME"
+          git config --global user.email "$USER_EMAIL"
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      - uses: c-hive/gha-yarn-cache@v1
+      - name: Yarn install
+        run: yarn install
+      - name: Hexo deploy
+        run: yarn run deploy
 ```
+
+注意: `secrets.SSH_PRIVATE_KEY` 在 每个仓库下 setting > secrets 设置
 
 ## gitee
 
