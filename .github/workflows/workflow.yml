@@ -9,7 +9,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - uses: c-hive/gha-yarn-cache@v1
       - name: Configure Private Key
         run: |
           mkdir -p ~/.ssh
@@ -30,6 +29,7 @@ jobs:
           git add *
           git commit -m ":construction_worker: Auto Sync"
           git push
+      - uses: c-hive/gha-yarn-cache@v1
       - name: Install JS dependencies
         run: yarn install
       - name: Test
