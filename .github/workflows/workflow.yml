@@ -16,7 +16,9 @@ jobs:
         env:
           PARENT_REPOSITORY: 'git@github.com:WANGJUEYA/B612-Factory.git'
         run: |
-          git clone "$PARENT_REPOSITORY" --recursive && cd `basename "$PARENT_REPOSITORY"`
-          git switch -c  origin/master
+          git clone "$PARENT_REPOSITORY" --recursive
+          cd `basename "$PARENT_REPOSITORY"`
+          git submodule update --remote
+          git add *
           git commit -m ":construction_worker: Auto Sync"
           git push
