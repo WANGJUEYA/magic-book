@@ -5,23 +5,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Configure Private Key
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           mkdir -p ~/.ssh
-      - run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-      - run: chmod 600 ~/.ssh/id_rsa
-      - run: echo "🍏 This SSH_PRIVATE_KEY is ${{ secrets.SSH_PRIVATE_KEY }}."
-      - run: echo "🍏 This SSH_PRIVATE_KEY is "$SSH_PRIVATE_KEY"."
-      - run: echo ~/.ssh/id_rsa
-      - run: echo "StrictHostKeyChecking no" >> ~/.ssh/config
-      - run: echo ~/.ssh/config
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          echo "StrictHostKeyChecking no" >> ~/.ssh/config
       - name: Push Mirror
         env:
           PARENT_REPOSITORY: 'git@github.com:WANGJUEYA/B612-Factory.git'
         run: |
-          git clone "$PARENT_REPOSITORY" --recursive
-          cd `basename "$PARENT_REPOSITORY"`
+          git clone "$PARENT_REPOSITORY" Repository --recursive
+          cd Repository
           git submodule update --remote
           git add *
           git commit -m ":construction_worker: Auto Sync"
