@@ -251,6 +251,11 @@ $ git config --global user.email "GitHub绑定邮箱"
 
 + 输入命令, 一直回车生成文件
 
++ 注意: 如果我们`Enter passphrase`传入了值, 会遇到一系列问题, 建议直接回车不传值
+  + 拉取带子模块的仓库时失败, 需要用 `git-bash` 客户端构建
+  + GitHub Action 构建时无法传入key(暂未找到解决方案)
+
+
 ```bash
 $ ssh-keygen -t rsa -C "{注册邮箱地址}"
 ```
