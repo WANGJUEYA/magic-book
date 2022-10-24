@@ -11,6 +11,7 @@ jobs:
           mkdir -p ~/.ssh
       - run: echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
       - run: chmod 600 ~/.ssh/id_rsa
+      - run: echo "🍏 This SSH_PRIVATE_KEY is ${{ jue.SSH_PRIVATE_KEY }}."
       - run: echo "🍏 This SSH_PRIVATE_KEY is ${{ secrets.SSH_PRIVATE_KEY }}."
       - run: echo "🍏 This SSH_PRIVATE_KEY is "$SSH_PRIVATE_KEY"."
       - run: cat ~/.ssh/id_rsa
