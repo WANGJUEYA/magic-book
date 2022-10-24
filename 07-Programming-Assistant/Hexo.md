@@ -171,7 +171,7 @@ auto_category:
   ```
     + 输入命令, 一直回车生成文件
   ```bash
-  $ ssh-keygen -t rsa -C "{注册邮箱地址}"
+  $ ssh-keygen -m PEM -t rsa -b 4096 -C "{注册邮箱地址}"
   ```
 
     + 打开 `C:\Users\用户名\.ssh\id_rsa.pub`, 复制内容

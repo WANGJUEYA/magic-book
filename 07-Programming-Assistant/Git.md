@@ -259,12 +259,20 @@ $ git config --global user.email "GitHub绑定邮箱"
 
 
 ```bash
-$ ssh-keygen -t rsa -C "{注册邮箱地址}"
+$ ssh-keygen -m PEM -t rsa -b 4096 -C "{注册邮箱地址}"
 ```
 
 + 打开 `C:\Users\用户名\.ssh\id_rsa.pub`, 复制内容
 + 在gitee及github设置中新增ssh
 + 之后设置remote代码源时需要指定为ssh协议 `git@github.com:username`
+
+### 异常解决
+
+#### Load key "/home/runner/.ssh/id_rsa": invalid format
+
+GitHub Action构建时出现
+
++ 应当使用 `-m PEM` 参数
 
 ## Gitmoji
 
