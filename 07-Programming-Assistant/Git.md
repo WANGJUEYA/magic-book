@@ -237,6 +237,8 @@ git submodule add git@github.com:WANGJUEYA/hexo-theme-christmas-tree.git ./theme
 git rm -r --cached themes/christmas-tree
 # 首次拉取包含子模块的代码(windows子模块ssh验证有问题, 试用git的命令行客户端 git-bash 处理)
 git clone git@github.com:WANGJUEYA/B612-Factory.git --recursive
+# 第一次初始化所有子模块子模块
+git submodule update --init --recursive
 # 更新所有子模块到最新版本
 git submodule update --remote
 ```
@@ -417,7 +419,9 @@ jobs:
           node-version: 16.x
       - uses: c-hive/gha-yarn-cache@v1
       - name: Yarn install
-        run: yarn install
+        run: |
+          git submodule update --init --recursive
+          yarn install
       - name: Hexo deploy
         run: yarn run deploy
 ```
