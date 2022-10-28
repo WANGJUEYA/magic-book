@@ -434,6 +434,8 @@ https://docs.github.com/en/actions/managing-workflow-runs/skipping-workflow-runs
 
 Workflows that would otherwise be triggered using `on: push` or `on: pull_request` won't be triggered if you add any of the following strings to the commit message in a push, or the HEAD commit of a pull request:
 
+提交中包含以下文本会跳过对应的触发
+
 - `[skip ci]`
 - `[ci skip]`
 - `[no ci]`
