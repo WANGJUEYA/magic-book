@@ -428,6 +428,12 @@ jobs:
 
 注意: `secrets.SSH_PRIVATE_KEY` 在 每个仓库下 setting > secrets 设置
 
+#### 某次提交不触发构建
+
+提交描述空两行加上 `skip-checks:true` 或 `skip-checks: true`
+
+https://docs.github.com/en/actions/managing-workflow-runs/skipping-workflow-runs
+
 ## gitee
 
 开发者文档 https://gitee.com/api/v5/swagger#/postV5UserRepos
