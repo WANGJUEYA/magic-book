@@ -418,16 +418,17 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16.x
-      - uses: c-hive/gha-yarn-cache@v1
-      - name: Yarn install
+      - name: Git commit
         run: |
           git submodule update --init --recursive
           git submodule update --remote
           echo "构建时提交一份最新的代码"
           git add *
-          git commit -m ":construction_worker: [skip ci] Auto Update" | if [[ $? == 0 ]]; then
+          git commit -m ":construction_worker: [skip ci] Auto Update"
           git push origin master
-          fi
+      - uses: c-hive/gha-yarn-cache@v1
+      - name: Yarn install
+        run: |
           echo "修复自动构建时所有文章更新时间为当前时间问题 | 取git提交时间"
           cd source/_posts # 子模块更新失败问题
           git ls-tree -r --name-only HEAD | while read filename; do
