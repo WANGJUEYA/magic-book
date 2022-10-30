@@ -422,6 +422,12 @@ jobs:
       - name: Yarn install
         run: |
           git submodule update --init --recursive
+          git submodule update --remote
+          echo "构建时提交一份最新的代码"
+          git add * | if [[ $? > 0 ]]; then
+          git commit -m ":construction_worker: Auto Update"
+          git push origin master
+          fi
           echo "修复自动构建时所有文章更新时间为当前时间问题 | 取git提交时间"
           cd source/_posts # 子模块更新失败问题
           git ls-tree -r --name-only HEAD | while read filename; do
@@ -434,7 +440,9 @@ jobs:
           cd ../../
           yarn install
       - name: Hexo deploy
-        run: yarn run deploy
+        run: |
+          yarn run clean
+          yarn run deploy
 ```
 
 注意: `secrets.SSH_PRIVATE_KEY` 在 每个仓库下 setting > secrets 设置
