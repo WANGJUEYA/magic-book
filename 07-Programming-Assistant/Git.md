@@ -424,8 +424,9 @@ jobs:
           git submodule update --remote
           echo "构建时提交一份最新的代码"
           git add *
-          git commit -m ":construction_worker: [skip ci] Auto Update"
+          git commit -m ":construction_worker: [skip ci] Auto Update" | if [[ $? == 0 ]]; then
           git push origin master
+          fi
       - uses: c-hive/gha-yarn-cache@v1
       - name: Yarn install
         run: |
