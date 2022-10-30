@@ -7,6 +7,7 @@ categories:
   - 04-Programming-Languages
   - Assistant-File-Types
 date: 2022-09-19 00:00:00
+mathjax: true
 ---
  
 
@@ -151,3 +152,225 @@ a3>带文本不对称矩形]
 b1{带文本菱形}
 c1((带文本圆形))
 ```
+
+### 公式渲染`mathjax`
+
+参考链接:
+
++ https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference
+
++ http://events.jianshu.io/p/8363e3815b92
+ 
+\begin{eqnarray\*}
+\nabla\cdot\vec{E}&=&\frac{\rho}{\epsilon_0}\\\\
+\nabla\cdot\vec{B}&=&0\\\\
+\nabla\times\vec{E}&=&-\frac{\partial B}{\partial t}\\\\
+\nabla\times\vec{B}&=&\mu_0\left(\vec{J}+\epsilon_0\frac{\partial E}{\partial t}\right)\\\\
+\end{eqnarray\*}
+
+#### 插入公式
+
+- 行中公式(放在文中与其它文字混编)可以用如下方法表示：`$ 数学公式 $`
+- 独立公式可以用如下方法表示：`$$ 数学公式 $$`
+
+#### 输入上下标
+
+- `^`表示上标， `_` 表示下标。
+- 如果上下标的内容多于一个字符，需要用 `{}`将这些内容括成一个整体。
+- 上下标可以嵌套，也可以同时使用。
+
+$$ x^{y^z}=(1+{\rm e}^x)^{-2xy^w} $$
+```mathjax
+$$ x^{y^z}=(1+{\rm e}^x)^{-2xy^w} $$
+```
+
+- 另外，如果要在左右两边都有上下标，可以用`\sideset` 命令
+
+#### 括号和分隔符
+
+`()`、`[]`和`|`表示符号本身，使用 `\{\}` 来表示 `{}`。
+
+一些特殊的括号：
+
+| 输入 | 显示 |
+| :---: | :---: |
+| `$\langle表达式\rangle$`  | $\langle表达式\rangle$ |
+| `$\lceil表达式\rceil$`    | $\lceil表达式\rceil$ |
+| `$\lfloor表达式\rfloor$`  | $\lfloor表达式\rfloor$ |
+| `$\lbrace表达式\rbrace$`  | $\lbrace表达式\rbrace$ |
+
+#### 分数
+
++ 通常使用 `\frac {分子} {分母}`命令产生一个分数，可嵌套。
+
+$$\frac {分子} {分母}$$
+
++ 便捷情况可直接输入 `\frac ab`来快速生成一个
+
+$$\frac ab$$
+
+#### 开方
+
++ 使用 `\sqrt [根指数，省略时为2] {被开方数}`命令输入开方。
+
+$$\sqrt[3]{2}$$
+```mathjax
+$$\sqrt[3]{2}$$
+```
+
+#### 省略号
+
+数学公式中常见的省略号有两种，`\ldots` 表示与文本底线对齐的省略号，`\cdots` 表示与文本中线对齐的省略号。
+
+$$ f(x_1,x_2,\underbrace{\ldots}_{\rm ldots} ,x_n) = x_1^2 + x_2^2 + \underbrace{\cdots}\_{\rm cdots} + x_n^2 $$
+```mathjax
+$$ f(x_1,x_2,\underbrace{\ldots}_{\rm ldots} ,x_n) = x_1^2 + x_2^2 + \underbrace{\cdots}\_{\rm cdots} + x_n^2 $$
+```
+
+#### 矢量
+
+使用 `\vec{矢量}`来自动产生一个矢量。也可以使用 `\overrightarrow`等命令改变字母上方的符号。
+
+$$\vec{a} \cdot \vec{b}=0$$
+```mathjax
+$$\vec{a} \cdot \vec{b}=0$$
+```
+
+$$\overleftarrow{xy} \quad and \quad \overleftrightarrow{xy} \quad and \quad \overrightarrow{xy}$$
+```mathjax
+$$\overleftarrow{xy} \quad and \quad \overleftrightarrow{xy} \quad and \quad \overrightarrow{xy}$$
+```
+
+#### 积分
+
+使用 `\int_积分下限^积分上限 {被积表达式}`来输入一个积分。
+
+$$\int_0^1 {x^2} \,{\rm d}x$$
+```mathjax
+$$\int_0^1 {x^2} \,{\rm d}x$$
+```
+
+#### 极限
+
+使用`\lim_{变量 \to 表达式} 表达式` 来输入一个极限。如有需求，可以更改 `\to` 符号至任意符号。
+
+$$ \lim_{n \to +\infty} \frac{1}{n(n+1)} \quad and \quad \lim_{x\leftarrow{示例}} \frac{1}{n(n+1)} $$
+```mathjax
+$$ \lim_{n \to +\infty} \frac{1}{n(n+1)} \quad and \quad \lim_{x\leftarrow{示例}} \frac{1}{n(n+1)} $$
+```
+
+#### 累加、累乘
+
+使用 `\sum_{下标表达式}^{上标表达式} {累加表达式}`来输入一个累加。
+与之类似，使用 `\prod \bigcup \bigcap`来分别输入累乘、并集和交集。
+此类符号在行内显示时上下标表达式将会移至右上角和右下角。
+
+$$\sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad and \quad \bigcup_{i=1}^{2} R$$
+```mathjax
+$$\sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad and \quad \bigcup_{i=1}^{2} R$$
+```
+
+#### 希腊字母
+
+输入 `\小写希腊字母英文全称`和`\首字母大写希腊字母英文全称`来分别输入小写和大写希腊字母。
+对于大写希腊字母与现有字母相同的，直接输入大写字母即可。
+
+| 输入         | 显示  | 输入 | 显示 |
+|:---:|:---:|:---:|:---:|
+|` $\alpha$   `| $\alpha$   |` $A$        `| $A$        |
+|` $\beta$    `| $\beta$    |` $B$        `| $B$        |
+|` $\gamma$   `| $\gamma$   |` $\Gamma$   `| $\Gamma$   |
+|` $\delta$   `| $\delta$   |` $\Delta$   `| $\Delta$   |
+|` $\epsilon$ `| $\epsilon$ |` $E$        `| $E$        |
+|` $\zeta$    `| $\zeta$    |` $Z$        `| $Z$        |
+|` $\eta$     `| $\eta$     |` $H$        `| $H$        |
+|` $\theta$   `| $\theta$   |` $\Theta$   `| $\Theta$   |
+|` $\iota$    `| $\iota$    |` $I$        `| $I$        |
+|` $\kappa$   `| $\kappa$   |` $K$        `| $K$        |
+|` $\lambda$  `| $\lambda$  |` $\Lambda$  `| $\Lambda$  |
+|` $\nu$      `| $\nu$      |` $N$        `| $N$        |
+|` $\mu$      `| $\mu$      |` $M$        `| $M$        |
+|` $\xi$      `| $\xi$      |` $\Xi$      `| $\Xi$      |
+|` $o$        `| $o$        |` $O$        `| $O$        |
+|` $\pi$      `| $\pi$      |` $\Pi$      `| $\Pi$      |
+|` $\rho$     `| $\rho$     |` $P$        `| $P$        |
+|` $\sigma$   `| $\sigma$   |` $\Sigma$   `| $\Sigma$   |
+|` $\tau$     `| $\tau$     |` $T$        `| $T$        |
+|` $\upsilon$ `| $\upsilon$ |` $\Upsilon$ `| $\Upsilon$ |
+|` $\phi$     `| $\phi$     |` $\Phi$     `| $\Phi$     |
+|` $\chi$     `| $\chi$     |` $X$        `| $X$        |
+|` $\psi$     `| $\psi$     |` $\Psi$     `| $\Psi$     |
+|` $\omega$   `| $\omega$   |` $\Omega$   `| $\Omega$   |
+
+#### 大括号和行标
+
+- 指定括号大小：
+
+$$ \Biggl(\biggl(\Bigl(\bigl((x)\bigr)\Bigr)\biggr)\Biggr) $$
+```mathjax
+$$ \Biggl(\biggl(\Bigl(\bigl((x)\bigr)\Bigr)\biggr)\Biggr) $$
+```
+
+- 自动匹配括号大小：
+
+使用 `\left`和 `\right`来创建自动匹配高度的 (圆括号)，[方括号] 和 {花括号} 。
+在每个公式末尾前使用`\tag{行标}`来实现行标。
+
+# 13、字体转换
+
+若要对公式的某一部分字符进行字体转换，可以用 `{\字体 {需转换的部分字符}}` 命令，其中 `\字体` 部分可以参照下表选择合适的字体。一般情况下，公式默认为意大利体.
+
+| 输入          | 说明       |
+| ------------- | ---------- |
+| `\rm` | $\rm{罗马体}$ |
+| `\cal` | $\cal{花体}$ |
+| `\it` | $\it{意大利体}$ |
+| `\Bbb` | $\Bbb{黑板粗体}$ |
+| `\bf` | $\bf{粗体}$ |
+| `\mit` | $\mit{数学斜体}$ |
+| `\sf` | $\sf{等线体}$ |
+| `\scr` | $\scr{手写体}$ |
+| `\tt` | $\tt{打字机体}$ |
+| `\frak` | $\frak{旧德式字体}$ |
+| `\boldsymbol` | $\boldsymbol{黑体}$ |
+
+#### 设定表格
+
+$$
+\begin{array}{ccc|c}
+a11 & a12 & a13  & b1 \\\\
+a21 & a22  & a23 & b2  \\\\
+a31 & a32  & a33 & b3  \\\\
+\end{array}
+$$
+```
+$$
+\begin{array}{ccc|c}
+a11 & a12 & a13  & b1 \\\\
+a21 & a22  & a23 & b2  \\\\
+a31 & a32  & a33 & b3  \\\\
+\end{array}
+$$
+```
+
+#### 特殊符号
+
+| 名称           | 输入                                                         | 显示                                                         |
+|:---:| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 无穷           |`$infty$`|$infty$|
+| 加减乘除       |`$times \div \pm \mp$`|$times \div \pm \mp$|
+| 点乘           |`$cdot$`|$cdot$|
+| 空格           |`$quad$`|$quad$|
+| 各种等号       |`$lt \gt \le \leq \leqq \leqslant \ge \geq \geqq \geqslant \neq$`|$lt \gt \le \leq \leqq \leqslant \ge \geq \geqq \geqslant \neq$|
+| 求导           |`$text{d}x$`|$text{d}x$|
+| 累乘           |`$prod$`|$prod$|
+| 积分           |`$int$`|$int$|
+| 积积分         |`$iint$`|$iint$|
+| 积积积分       |`$iiint$`|$iiint$|
+| 并集交集什么的 |`$cup \cap \setminus \subset \subseteq \subsetneq \supset \in \notin \emptyset \varnothing$`|$cup \cap \setminus \subset \subseteq \subsetneq \supset \in \notin \emptyset \varnothing$|
+| 箭头           |`$to \rightarrow \leftarrow \Rightarrow \Leftarrow \mapsto$`|$to \rightarrow \leftarrow \Rightarrow \Leftarrow \mapsto$|
+| -         |`$binom{n+1}{2k}$`|$binom{n+1}{2k}$|
+| -         |`$land \lor \lnot \forall \exists \top \bot \vdash \vDash$`|$land \lor \lnot \forall \exists \top \bot \vdash \vDash$|
+| -         |`$star \ast \oplus \circ \bullet$`|$star \ast \oplus \circ \bullet$|
+| -         |`$approx \sim \simeq \cong \equiv \prec \lhd \therefore$`|$approx \sim \simeq \cong \equiv \prec \lhd \therefore$|
+| -         |`$nabla \partial$`|$nabla \partial$|
