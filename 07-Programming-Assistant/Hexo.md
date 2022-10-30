@@ -19,7 +19,7 @@ Hexo | Github 自定义博客生成工具
 
 ## [hexo安装](https://hexo.io/zh-cn/)
 
-+ [npm安装全局组件](TODO/npm/)
++ [npm安装全局组件](http:/wangjueya.github.io/2022/10/15/07-programming-assistant/node/#%E5%85%A8%E5%B1%80%E5%AE%89%E8%A3%85%E7%BB%84%E4%BB%B6)
 
 ``` bash
 $ npm install hexo-cli -g

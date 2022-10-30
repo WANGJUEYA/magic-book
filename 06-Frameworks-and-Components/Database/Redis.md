@@ -2,7 +2,6 @@
 title: Redis
 summary: Redis介绍与实战
 tags:
-  - TODO
   - redis
 categories:
   - 06-Frameworks-and-Components

@@ -2,7 +2,6 @@
 title: Elasticsearch
 summary: Elasticsearch
 tags:
-  - TODO
   - Database
   - Elasticsearch
 categories:

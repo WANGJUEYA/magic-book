@@ -2,7 +2,6 @@
 title: npm
 summary: npm
 tags:
-  - TODO
   - npm
 categories:
   - 07-Programming-Assistant
@@ -10,6 +9,11 @@ date: 2022-10-15 15:29:17
 ---
 
 ## npm常用包
+
+### 全局安装组件
+```shell
+npm install {package} -g 
+```
 
 ### 快速完全删除 node_modules
 

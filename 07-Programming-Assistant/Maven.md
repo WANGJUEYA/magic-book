@@ -2,7 +2,6 @@
 title: Maven
 summary: Maven
 tags:
-  - TODO
   - Maven
 categories:
   - 07-Programming-Assistant

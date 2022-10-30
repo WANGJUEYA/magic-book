@@ -2,7 +2,6 @@
 title: Design Patterns
 summary: Design Patterns | 设计模式详解
 tags:
-  - TODO
   - Design Patterns
 top: true
 cover: true

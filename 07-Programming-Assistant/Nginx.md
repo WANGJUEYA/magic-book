@@ -2,7 +2,6 @@
 title: Nginx
 summary: Nginx
 tags:
-  - TODO
   - Nginx
 categories:
   - 07-Programming-Assistant

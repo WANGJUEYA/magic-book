@@ -315,8 +315,117 @@ $$ \Biggl(\biggl(\Bigl(\bigl((x)\bigr)\Bigr)\biggr)\Biggr) $$
 
 使用 `\left`和 `\right`来创建自动匹配高度的 (圆括号)，[方括号] 和 {花括号} 。
 在每个公式末尾前使用`\tag{行标}`来实现行标。
+   + !下述表达式不能正常执行
 
-# 13、字体转换
+```mathjax
+$$
+f\left(
+   \left[ 
+     \frac{
+       1+\left\{x,y\right\}
+     }{
+       \left(
+          \frac{x}{y}+\frac{y}{x}
+       \right)
+       \left(u+1\right)
+     }+a
+   \right]^{3/2}
+\right)
+\tag{行标}
+$$
+```
+
+#### 方程组
+
++ 在需要建立方程组的时候，可以用 `\begin{array}…\end{array}` 和 `\left\{…\right.`，如：
+
+$$
+\left\\{
+\begin{array}{ll}
+a_1x+b_1y+c_1z=d_1 \\\\
+a_2x+b_2y+c_2z=d_2 \\\\
+a_3x+b_3y+c_3z=d_3
+\end{array}
+\right.
+$$
+```mathjax
+$$
+\left\\{ 
+\begin{array}{ll}
+a_1x+b_1y+c_1z=d_1 \\\\
+a_2x+b_2y+c_2z=d_2 \\\\
+a_3x+b_3y+c_3z=d_3
+\end{array}
+\right.
+$$
+```
+
++ 另外，也可以使用 `\begin{cases}…\end{cases}`，如：
+
+$$
+\begin{cases}
+a_1x+b_1y+c_1z=d_1 \\\\
+a_2x+b_2y+c_2z=d_2 \\\\
+a_3x+b_3y+c_3z=d_3
+\end{cases}
+$$
+```mathjax
+$$
+\begin{cases}
+a_1x+b_1y+c_1z=d_1 \\\\
+a_2x+b_2y+c_2z=d_2 \\\\
+a_3x+b_3y+c_3z=d_3
+\end{cases}
+$$
+```
+
++ 如果想把等号对齐，就用 `\begin{aligned}...\end{aligned}` 和 `\left\{…\right.`，如：
+
+$$
+\left\\{
+\begin{aligned}
+a_1x+b_1y+c_1z &= d_1+e_1 \\\\
+a_2x+b_2y &= d_2 \\\\
+a_3x+b_3y+c_3z &= d_3
+\end{aligned}
+\right.
+$$
+```mathjax
+$$
+\left\\{
+\begin{aligned}
+a_1x+b_1y+c_1z &= d_1+e_1 \\\\
+a_2x+b_2y &= d_2 \\\\
+a_3x+b_3y+c_3z &= d_3
+\end{aligned}
+\right.
+$$
+```
+
++ 如果想要等号对齐，并左右两边左对齐，就可以用 `array` 中的 `l` 参数：
+
+$$
+\left\\{
+\begin{array}{ll}
+a_1x+b_1y+c_1z &=d_1+e_1 \\\\
+a_2x+b_2y &=d_2 \\\\
+a_3x+b_3y+c_3z &=d_3
+\end{array}
+\right.
+$$
+```mathjax
+$$
+\left\\{
+\begin{array}{ll}
+a_1x+b_1y+c_1z &=d_1+e_1 \\\\
+a_2x+b_2y &=d_2 \\\\
+a_3x+b_3y+c_3z &=d_3
+\end{array}
+\right.
+$$
+```
+
+#### 字体转换
 
 若要对公式的某一部分字符进行字体转换，可以用 `{\字体 {需转换的部分字符}}` 命令，其中 `\字体` 部分可以参照下表选择合适的字体。一般情况下，公式默认为意大利体.
 
@@ -344,7 +453,7 @@ a31 & a32  & a33 & b3  \\\\
 \end{array}
 $$
 ```
-$$
+$$mathjax
 \begin{array}{ccc|c}
 a11 & a12 & a13  & b1 \\\\
 a21 & a22  & a23 & b2  \\\\
