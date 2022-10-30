@@ -424,8 +424,8 @@ jobs:
           git submodule update --init --recursive
           git submodule update --remote
           echo "构建时提交一份最新的代码"
-          git add * | if [[ $? > 0 ]]; then
-          git commit -m ":construction_worker: Auto Update"
+          git add *
+          git commit -m ":construction_worker: [skip ci] Auto Update" | if [[ $? == 0 ]]; then
           git push origin master
           fi
           echo "修复自动构建时所有文章更新时间为当前时间问题 | 取git提交时间"
