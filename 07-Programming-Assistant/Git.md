@@ -412,6 +412,7 @@ jobs:
         run: |
           git config --global user.name "$USER_NAME"
           git config --global user.email "$USER_EMAIL"
+          git config --global core.quotepath false
       - uses: actions/checkout@v2
       - name: Setup Node.js
         uses: actions/setup-node@v1
@@ -421,6 +422,16 @@ jobs:
       - name: Yarn install
         run: |
           git submodule update --init --recursive
+          echo "修复自动构建时所有文章更新时间为当前时间问题 | 取git提交时间"
+          cd source/_posts # 子模块更新失败问题
+          git ls-tree -r --name-only HEAD | while read filename; do
+          echo $filename;
+          unixtime=$(git log -1 --format="%at" -- "${filename}");
+          touchtime=$(date -d @$unixtime +'%Y%m%d%H%M.%S');
+          echo "${filename} --- ${touchtime}"
+          touch -t ${touchtime} "${filename}";
+          done
+          cd ../../
           yarn install
       - name: Hexo deploy
         run: yarn run deploy
