@@ -8,7 +8,6 @@ categories:
   - 04-Programming-Languages
   - JavaScript
 date: 2022-10-18 10:59:47
-updated: 2022-10-19 18:03:47
 ---
 
 官方文档 https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#object-types
