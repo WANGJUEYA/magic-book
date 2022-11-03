@@ -241,6 +241,13 @@ $$\overleftarrow{xy} \quad and \quad \overleftrightarrow{xy} \quad and \quad \ov
 $$\overleftarrow{xy} \quad and \quad \overleftrightarrow{xy} \quad and \quad \overrightarrow{xy}$$
 ```
 
+#### 上划线、下划线 (平均数)
+
+$$ \overline X \quad  and  \quad \underline X \quad and \quad \hat a $$
+```mathjax
+$$ \overline X \quad  and  \quad \underline X \quad and \quad \hat a $$
+```
+
 #### 积分
 
 使用 `\int_积分下限^积分上限 {被积表达式}`来输入一个积分。
@@ -466,20 +473,20 @@ $$
 
 | 名称           | 输入                                                         | 显示                                                         |
 |:---:| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 无穷           |`$infty$`|$infty$|
-| 加减乘除       |`$times \div \pm \mp$`|$times \div \pm \mp$|
-| 点乘           |`$cdot$`|$cdot$|
-| 空格           |`$quad$`|$quad$|
-| 各种等号       |`$lt \gt \le \leq \leqq \leqslant \ge \geq \geqq \geqslant \neq$`|$lt \gt \le \leq \leqq \leqslant \ge \geq \geqq \geqslant \neq$|
-| 求导           |`$text{d}x$`|$text{d}x$|
-| 累乘           |`$prod$`|$prod$|
-| 积分           |`$int$`|$int$|
-| 积积分         |`$iint$`|$iint$|
-| 积积积分       |`$iiint$`|$iiint$|
-| 并集交集什么的 |`$cup \cap \setminus \subset \subseteq \subsetneq \supset \in \notin \emptyset \varnothing$`|$cup \cap \setminus \subset \subseteq \subsetneq \supset \in \notin \emptyset \varnothing$|
-| 箭头           |`$to \rightarrow \leftarrow \Rightarrow \Leftarrow \mapsto$`|$to \rightarrow \leftarrow \Rightarrow \Leftarrow \mapsto$|
-| -         |`$binom{n+1}{2k}$`|$binom{n+1}{2k}$|
-| -         |`$land \lor \lnot \forall \exists \top \bot \vdash \vDash$`|$land \lor \lnot \forall \exists \top \bot \vdash \vDash$|
-| -         |`$star \ast \oplus \circ \bullet$`|$star \ast \oplus \circ \bullet$|
-| -         |`$approx \sim \simeq \cong \equiv \prec \lhd \therefore$`|$approx \sim \simeq \cong \equiv \prec \lhd \therefore$|
-| -         |`$nabla \partial$`|$nabla \partial$|
+| 无穷           |`$\infty$`|$\infty$|
+| 加减乘除       |`$\times \div \pm \mp$`|$\times \div \pm \mp$|
+| 点乘           |`$\cdot$`|$\cdot$|
+| 空格           |`$\quad$`|$\quad$|
+| 各种等号       |`$\lt \gt \le \leq \leqq \leqslant \ge \geq \geqq \geqslant \neq$`|$\lt \gt \le \leq \leqq \leqslant \ge \geq \geqq \geqslant \neq$|
+| 求导           |`$\text{d}x$`|$\text{d}x$|
+| 累乘           |`$\prod$`|$\prod$|
+| 积分           |`$\int$`|$\int$|
+| 积积分         |`$\iint$`|$\iint$|
+| 积积积分       |`$\iiint$`|$\iiint$|
+| 并集交集什么的 |`$\cup \cap \setminus \subset \subseteq \subsetneq \supset \in \notin \emptyset \varnothing$`|$\cup \cap \setminus \subset \subseteq \subsetneq \supset \in \notin \emptyset \varnothing$|
+| 箭头           |`\$to \rightarrow \leftarrow \Rightarrow \Leftarrow \mapsto$`|$\to \rightarrow \leftarrow \Rightarrow \Leftarrow \mapsto$|
+| -         |`$\binom{n+1}{2k}$`|$\binom{n+1}{2k}$|
+| -         |`$\land \lor \lnot \forall \exists \top \bot \vdash \vDash$`|$\land \lor \lnot \forall \exists \top \bot \vdash \vDash$|
+| -         |`$\star \ast \oplus \circ \bullet$`|$\star \ast \oplus \circ \bullet$|
+| -         |`$\approx \sim \simeq \cong \equiv \prec \lhd \therefore$`|$\approx \sim \simeq \cong \equiv \prec \lhd \therefore$|
+| -         |`$\nabla \partial$`|$\nabla \partial$|
