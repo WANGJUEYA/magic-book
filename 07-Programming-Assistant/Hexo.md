@@ -139,7 +139,7 @@ theme: christmas-tree
 安装插件
 
 ``` bash
-$ yarn add hexo-image-link
+$ yarn add hexo-asset-img
 ```
 
 ```![image file label]（markdown-file-name/local-image.png） -> {% asset_img label local-image.png %}```
