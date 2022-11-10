@@ -1,6 +1,6 @@
 ---
-title: Lunix
-summary: Lunix 常用命令
+title: Linux
+summary: Linux 常用命令
 categories:
  - 02-Operating-System
  - Linux

@@ -139,7 +139,7 @@ theme: christmas-tree
 安装插件
 
 ``` bash
-$ yarn add hexo-image-link
+$ yarn add hexo-asset-img
 ```
 
 ```![image file label]（markdown-file-name/local-image.png） -> {% asset_img label local-image.png %}```
@@ -199,6 +199,55 @@ deploy:
 ## 自定义插件
 
 + [hexo 教程之为 hexo 编写一个插件](https://blog.csdn.net/godread_cn/article/details/122031503)
+
+## 其他插件介绍
+
+### 流程图
+
++ Hexo插件使用教程: https://blog.17lai.site/posts/cf0f47fd/#Mermaid
++ mermaid语法教程: https://mermaid-js.github.io/mermaid/#/
+
+```text
+{% mermaid %}
+[内容]
+{% endmermaid %}
+```
+
+{% mermaid %}
+graph TD
+A[Christmas] -->|Get money| B(Go shopping)
+B --> C{Let me think}
+C -->|One| D[Laptop]
+C -->|Two| E[iPhone]
+C -->|Three| F[Car]
+{% endmermaid %}
+```text
+{% mermaid %}
+graph TD
+A[Christmas] -->|Get money| B(Go shopping)
+B --> C{Let me think}
+C -->|One| D[Laptop]
+C -->|Two| E[iPhone]
+C -->|Three| F[Car]
+{% endmermaid %}
+```
+
+### 脑图 `hexo-markmap`
+
++ https://github.com/MaxChang3/hexo-markmap
+
+
+{% markmap 400px %}
+- links
+- **inline** ~~text~~ *styles*
+- multiline
+  text
+- `inline code`
+{% endmarkmap %}
+
+### 公式
+
+> https://wangjueya.github.io/markdown/#%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93mathjax
 
 ## 快捷启动可用项目
 
