@@ -42,3 +42,9 @@ ipconfig /flushdns
 ```bash
 :: 注释内容
 ```
+
+### 打印目录树 tree
+
+```bash
+tree >> ../tree.txt
+```
