@@ -14,6 +14,8 @@ date: 2022-10-18 10:59:47
 
 在线运行 https://www.typescriptlang.org/play
 
+学习手册1 https://www.wenjiangs.com/doc/typescript-typeguard
+
 ## 语法介绍
 
 ### 基础介绍
