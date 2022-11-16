@@ -338,6 +338,35 @@ $$\sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad a
 $$\sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad and \quad \bigcup_{i=1}^{2} R$$
 ```
 
+#### 在符号 底&顶部 写符号&换行
+
+##### 符号底部
+
+`\underset{A}{B}`
+
+$$ \underset{0\leq j \leq k-1}{\arg\min} $$
+```mathjax
+$$ \underset{0\leq j \leq k-1}{\arg\min} $$
+```
+
+##### 符号顶部
+
+`\overset{A}{B}`
+
+$$ A \overset ?= B $$
+```mathjax
+$$ A \overset ?= B $$
+```
+
+##### 符号底部换行
+
+`_{\substack A \\\\ B}`
+
+$$ \sum_{\substack{0<i<n \\\\ 0<j<n}} A_{ij} $$
+```mathjax
+$$ \sum_{\substack{0<i<n \\\\ 0<j<n}} A_{ij} $$
+```
+
 #### 希腊字母
 
 输入 `\小写希腊字母英文全称`和`\首字母大写希腊字母英文全称`来分别输入小写和大写希腊字母。
@@ -545,9 +574,9 @@ $$
 | 积积分         |`$\iint$`|$\iint$|
 | 积积积分       |`$\iiint$`|$\iiint$|
 | 并集交集什么的 |`$\cup \cap \setminus \subset \subseteq \subsetneq \supset \in \notin \emptyset \varnothing$`|$\cup \cap \setminus \subset \subseteq \subsetneq \supset \in \notin \emptyset \varnothing$|
-| 箭头           |`\$to \rightarrow \leftarrow \Rightarrow \Leftarrow \mapsto$`|$\to \rightarrow \leftarrow \Rightarrow \Leftarrow \mapsto$|
+| 箭头           |`\$to \rightarrow \leftarrow \Rightarrow \Leftarrow \mapsto \hookrightarrow$`|$\to \rightarrow \leftarrow \Rightarrow \Leftarrow \mapsto \hookrightarrow$|
 | -         |`$\binom{n+1}{2k}$`|$\binom{n+1}{2k}$|
 | -         |`$\land \lor \lnot \forall \exists \top \bot \vdash \vDash$`|$\land \lor \lnot \forall \exists \top \bot \vdash \vDash$|
 | -         |`$\star \ast \oplus \circ \bullet$`|$\star \ast \oplus \circ \bullet$|
 | -         |`$\approx \sim \simeq \cong \equiv \prec \lhd \therefore$`|$\approx \sim \simeq \cong \equiv \prec \lhd \therefore$|
-| -         |`$\nabla \partial$`|$\nabla \partial$|
+| -         |`$\square \triangleq \triangle \nabla \partial$`|$\square \triangleq \triangle \nabla \partial$|
