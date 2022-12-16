@@ -276,6 +276,29 @@ GitHub Action构建时出现
 
 + 应当使用 `-m PEM` 参数
 
+#### ssh:connect to host github.com port 22: Connection timed out
+
++ 更改端口
+
+```shell
+cd C:/user/.ssh/config
+```
+
+```txt
+Host github.com
+User git
+Hostname ssh.github.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/id_rsa
+Port 443
+```
+
+```shell
+# 检测配置是否成功
+ssh -T git@github.com
+```
+
+
 ## Gitmoji
 
 [An emoji guide for your commit messages](https://gitmoji.dev/)
