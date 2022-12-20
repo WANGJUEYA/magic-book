@@ -31,4 +31,14 @@ VALUES $1 '{"zh-CN":"$5","en-US":"welcome"}
 
 ```
 
-### 变量且非函数(vue2转vue3)
+### IDEA 下划线转驼峰(java不支持)
+
++ http://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html
++ `\w`范围为`_0-9a-zA-Z`包含下划线
+
+```text
+_?([0-9a-zA-Z])([0-9a-zA-Z]*)
+```
+```text
+\U$1\E\L$2\E
+```
