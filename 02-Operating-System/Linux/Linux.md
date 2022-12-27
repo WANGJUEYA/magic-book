@@ -47,6 +47,10 @@ ls # test2.txt
 
 ## 常用命令
 
+```shell
+pwd # 查看当前路径
+```
+
 ### 查看编辑文件信息
 
 ```shell
@@ -62,31 +66,38 @@ touch
 # -t : 后面可以接时间，格式为 [YYMMDDhhmm]
 ```
 
-### 搜索匹配的文件名
+## 文件操作
 
 ```shell
-find / -name $name
-```
+find / -name $name # 搜索匹配的文件名
+cp -r $source $direct # 复制文件
+rm -rf {path} # 强制删除文件夹及文件
 
-### 权限不足
+mv A B   # 将目录A重命名为B
+mv /a /b/c # 将/a目录移动到/b下，并重命名为c
+mv abc 123 # 将一个名为abc的文件重命名为123，如果当前目录下也有个123的文件的话，这个文件是会将它覆盖的。
 
-```shell
-chmod 777 $file
-chmod -Rf 777 $floder
-```
 
-### 复制文件
-
-```shell
-cp -r $source $direct
+chmod 777 $file # 权限不足
+chmod -Rf 777 $floder # 权限不足
 ```
 
 ### 其他命令
 ```shell
 wget
 ll
-rm -rf {path} ## 强制删除文件夹及文件 
 tail
+rename
+```
+
+## 软件安装
+
+```shell
+whereis nginx # 查看软件安装路径
+which nginx # 查看运行文件所在路径
+ps -ef | grep tomcat # 查看运行进程
+kill -9 PID # 杀死运行进程
+lsof -i:port # 查看端口占用
 ```
 
 ## Tools
@@ -142,4 +153,16 @@ yum install git -y
 rpm -qa | grep git
 git --version
 ls /usr/libexec/git-core
+```
+
+
+## 开启/关闭防火墙
+
+```shell
+firewall-cmd --list-ports # 列出所有防火墙端口
+firewall-cmd --query-port=9010/tcp  # 查询端口防火墙状态
+firewall-cmd --add-port=9010/tcp --permanent # 增加防火墙端口
+systemctl restart firewalld # 重启防火墙
+firewall-cmd --query-port=9010/tcp
+firewall-cmd --list-ports
 ```
