@@ -17,6 +17,91 @@ date: 2022-10-15 13:44:53
 
 https://github.com/alibaba/easyexcel/issues/1138
 
++ 核心逻辑: 使用EXCEL 数据 > 数据校验 > `=select04!$A$1:$A$4`
++ 同样可以使用公式(不能使用数组) > `=IF($B$13=1,select00!$A$1:$A$44,IF($B$13=2,select03!$A$1:$A$10,select04!$A$1:$A$4))`
++ 可以使用子串截取的方式从同一个下拉框获取数据 | Excel 省市县联动下拉框
+
+```java
+@Slf4j
+public class ImportSelectSheetWriteHandler implements SheetWriteHandler {
+
+    /**
+     * 自定义的行和列
+     * key为下拉框对应的列号, 从0开始计算
+     * value存储一个map(其中key为数据库读取的值/value为显示展示的值)
+     */
+    private final Map<Integer, String[]> customSelect;
+
+    /**
+     * 生成下拉框最后行号
+     */
+    private int lastRow;
+
+    public ImportSelectSheetWriteHandler(Map<Integer, String[]> customSelect) {
+        this.customSelect = customSelect;
+        this.lastRow = lastRowConfig();
+    }
+
+    public ImportSelectSheetWriteHandler lastRow(int lastRow) {
+        if (lastRow > 1) {
+            this.lastRow = lastRow;
+        }
+        return this;
+    }
+
+    private int lastRowConfig() {
+        try {
+            String limit = SpringUtils.getBean(SystemConfigHelper.class).getConfigValue("SYS_LIMIT_IMPORT");
+            int result = ConvertUtils.toInt(limit, 1000);
+            if (result > 1) {
+                return result;
+            }
+        } catch (Exception e) {
+            log.error("获取导入上限配置失败!", e);
+        }
+        return 1000;
+    }
+
+    @Override
+    public void beforeSheetCreate(WriteWorkbookHolder writeWorkbookHolder, WriteSheetHolder writeSheetHolder) {
+
+    }
+
+    @Override
+    public void afterSheetCreate(WriteWorkbookHolder writeWorkbookHolder, WriteSheetHolder writeSheetHolder) {
+        log.info("第{}个Sheet写入成功。", writeSheetHolder.getSheetNo());
+        if (customSelect != null && customSelect.size() > 0) {
+            for (int key : customSelect.keySet()) {
+                CellRangeAddressList cellRangeAddressList = new CellRangeAddressList(1, lastRow, key, key);
+
+                String sheetName = "select" + writeSheetHolder.getSheetNo() + key;
+                String[] select = customSelect.get(key);
+                generateOtherSheet(writeWorkbookHolder.getWorkbook(), sheetName, select);
+
+                String formula = sheetName + "!$A$1:$A$" + select.length;
+                DataValidationHelper helper = writeWorkbookHolder.getWorkbook().getSheet(sheetName).getDataValidationHelper();
+                DataValidationConstraint constraint = helper.createFormulaListConstraint(formula);
+                DataValidation dataValidation = helper.createValidation(constraint, cellRangeAddressList);
+                writeSheetHolder.getSheet().addValidationData(dataValidation);
+                writeWorkbookHolder.getWorkbook().setSheetHidden(writeWorkbookHolder.getWorkbook().getSheetIndex(sheetName), true);
+            }
+        }
+    }
+
+    private void generateOtherSheet(Workbook wb, String sheetName, String[] select) {
+        // 创建下拉列表值存储工作表
+        Sheet sheet = wb.createSheet(sheetName);
+        // 循环往该sheet中设置添加下拉列表的值
+        int index = 0;
+        for (String key : select) {
+            Row row = sheet.createRow(index++);
+            Cell cellValue = row.createCell(0);
+            cellValue.setCellValue(key);
+        }
+    }
+}
+```
+
 ### 构造多页签主子表数据
 
 ```java
