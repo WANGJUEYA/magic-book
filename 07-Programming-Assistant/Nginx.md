@@ -11,14 +11,14 @@ date: 2022-10-15 15:13:24
 ## 常用命令
 
 ```shell
-$ nginx -v # 显示 nginx 的版本
-$ start nginx # 开启nginx
-$ nginx -s stop # 快速关闭Nginx，可能不保存相关信息，并迅速终止web服务。
-$ nginx -s quit # 平稳关闭Nginx，保存相关信息，有安排的结束web服务。
-$ nginx -s reload # 因改变了Nginx相关配置，需要重新加载配置而重载。
-$ nginx -s reopen # 重新打开日志文件。
-$ nginx -c filename # 为 Nginx 指定一个配置文件，来代替缺省的。
-$ nginx -t # 不运行，而仅仅测试配置文件; nginx 将检查配置文件的语法的正确性，并尝试打开配置文件中所引用到的文件。
+nginx -v # 显示 nginx 的版本
+start nginx # 开启nginx
+nginx -s stop # 快速关闭Nginx，可能不保存相关信息，并迅速终止web服务。
+nginx -s quit # 平稳关闭Nginx，保存相关信息，有安排的结束web服务。
+nginx -s reload # 因改变了Nginx相关配置，需要重新加载配置而重载。
+nginx -s reopen # 重新打开日志文件。
+nginx -c filename # 为 Nginx 指定一个配置文件，来代替缺省的。
+nginx -t # 不运行，而仅仅测试配置文件; nginx 将检查配置文件的语法的正确性，并尝试打开配置文件中所引用到的文件。
 ```
 
 ## CentOS7下安装Nginx
@@ -68,3 +68,64 @@ cd /usr/local/nginx/sbin/
 ./nginx -s reload
 ~~~
 
+### Nginx升级websocket
+
+```nginx.conf
+worker_processes  1;
+events {
+    worker_connections  1024;
+}
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+
+    map $http_upgrade $connection_upgrade {
+        default upgrade;
+        ''      close;
+    }
+    
+    server {
+        listen       9096;
+        server_name  localhost;
+
+        # 请求头参数允许下划线
+        underscores_in_headers on;
+        proxy_pass_request_headers on;
+
+        location /dev-api/ {
+            # 请求服务器升级协议为 WebSocket
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $connection_upgrade;
+            # proxy_set_header Upgrade $http_upgrade;
+            # proxy_set_header Connection "upgrade";
+            # proxy_http_version 1.1;
+            
+            # 设置读写超时时间，默认 60s 无数据连接将会断开
+            proxy_read_timeout 300s;
+            proxy_send_timeout 300s;
+
+            proxy_set_header Host 127.0.0.1;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header REMOTE-HOST $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_pass http://127.0.0.1:8880/api/;
+        }
+        
+        location / {
+            root html;
+            index index.html index.htm;
+            if (!-e $request_filename) {
+                rewrite ^(.*)$ /index.html?s=$1 last;
+                break;
+            }
+        }
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+}
+```
