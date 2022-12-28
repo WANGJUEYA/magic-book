@@ -140,7 +140,7 @@ htop
 + https://dandelioncloud.cn/article/details/1439110455683014658/
 
 ```shell
-jsp [-mlv]# 查询java进程 -q 只展示pid -m 输出main参数 -l 主类完整包名 -v jvm 参数
+jps [-mlv]# 查询java进程 -q 只展示pid -m 输出main参数 -l 主类完整包名 -v jvm 参数
 jstack [option] 31357 > jstack.31357.log # 报存线程消耗最高的日志 -F 强制打印 -l 长列表  -m 混合模式
 jmap # jvm使用情况 
 jmap -heap [pid] # 查看整个JVM内存状态,要注意的是在使用CMS GC 情况下，jmap -heap的执行有可能会导致JAVA 进程挂起 
