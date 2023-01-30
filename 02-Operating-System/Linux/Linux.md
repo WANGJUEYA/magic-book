@@ -15,6 +15,7 @@ pwd # 查看当前路径
 history # 搜索服务器上历史命令
 history | grep tomcat # 搜索包含tomcat历史命令
 # ? 如何查询某一个历史命令附近的命令?
+ln -s /data/nodejs/node-v16.13.2-linux-x64/bin/yarn /usr/sbin/yarn # 全局命令
 ```
 
 ## 将上一条命令的结果作为下一条命令的参数
