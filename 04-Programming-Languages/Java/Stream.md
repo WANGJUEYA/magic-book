@@ -36,3 +36,15 @@ public class MyStream {
 }
 ```
 
+### Stream按照指定尺寸分割集合
+
++ 应用案例: oracle `IN` 查询 每次查询大小不能大于1000
+
+```java
+queryWrapper.and(qw -> {
+    int group = (int) Math.ceil((double) fieldValueList.size() / MAX_IN_SIZE);
+    Stream.iterate(0, index -> index + MAX_IN_SIZE).limit(group).forEach(index ->
+        qw.or(subQw -> subQw.in(sqlName, fieldValueList.stream().skip(index).limit(MAX_IN_SIZE).collect(Collectors.toList()))));
+});
+```
+
