@@ -155,10 +155,16 @@ pmap # - report memory map of a process(查看进程的内存映像信息)pmap�
 
 ## 其他命令
 ```shell
-wget
+wget [-P {path}] # 下载资源 [-P 指定下载路径]
 ll
 tail
 rename
+df -hl # 查看磁盘大小
+cat /etc/redhat-release # 查看操作系统类型及版本
+uname -m # 查看操作系统架构
+mkdir # 新建文件夹
+tar -zcvf {target} {...source} # 打包
+tar -zxvf {source} -C {targetPath} # 解压缩
 ```
 
 ## Tools
@@ -215,7 +221,6 @@ rpm -qa | grep git
 git --version
 ls /usr/libexec/git-core
 ```
-
 
 ### htop
 
@@ -274,3 +279,25 @@ htop -s M_SIZE # 指定列排序
 | -u --user=USERNAME	| 只显示指定用户进程信息|
 | -p --pid=PID,[,PID,PID…]	| 只显示指定pid进程信息|
 | -v --version	| 打印命令版本| 
+
+
+### tar
+
+```shell
+-c # 建立压缩档案
+-x # 解压
+-t # 查看内容
+-r # 向压缩归档文件末尾追加文件
+-u # 更新原压缩包中的文件
+
+-z # 有gzip属性的
+-j # 有bz2属性的
+-Z # 有compress属性的
+-v # 显示所有过程
+-O # 将文件解开到标准输出
+
+-f 使用档案名字,切记,这个参数是最后一个参数,后面只能接档案名
+
+--strip-components 1 # 解压至下一级目录，若为2则解压至下下级目录
+--exclude # 排除某个文件
+```
