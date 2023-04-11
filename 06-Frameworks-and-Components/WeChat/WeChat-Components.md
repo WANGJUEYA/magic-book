@@ -3,6 +3,9 @@ title: 微信小程序组件
 summary: 微信小程序组件 | 好用的官方组件、组件插件
 tags:
   - 微信小程序
+categories:
+  - 06-Frameworks-and-Components
+  - WeChat
 date: 2023-03-07 16:10:32
 ---
 
