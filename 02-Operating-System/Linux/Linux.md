@@ -93,6 +93,7 @@ touch
 whereis nginx # 查看软件安装路径
 which nginx # 查看运行文件所在路径
 ps -ef | grep tomcat # 查看运行进程
+ps aux|head -1;ps aux|sort -rn -k3|head -10 # 查看cpu占用过高的进程
 kill -9 PID # 杀死运行进程
 lsof -i:port # 查看端口占用
 ```
