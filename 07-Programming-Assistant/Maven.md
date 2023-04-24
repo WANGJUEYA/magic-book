@@ -13,3 +13,15 @@ date: 2022-10-15 15:27:39
 ```shell
 mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc14 -Dversion=10.2.0.2.0 -Dpackaging=jar -Dfile=E:\oracle\ojdbc14-10.2.0.2.0.jar
 ```
+
+## 查找依赖
+
++ https://maven.apache.org/plugins/maven-dependency-plugin/tree-mojo.html
++ https://maven.apache.org/plugins/maven-dependency-plugin/examples/filtering-the-dependency-tree.html
+
+```shell
+mvn dependency:tree >> tree.txt # 将依赖数存储到文本
+mvn dependency:tree -Dincludes='com.alibaba' # 查看依赖树中包含某个groupId的依赖链（-Dincludes后面跟上groupId）
+mvn dependency:tree -Dincludes='com.alibaba':fastjson: # 查看依赖树中包含某个groupId和artifactId的依赖链（注意-Dincludes后面是等于号）
+mvn dependency:tree -Dincludes=:fastjson: # 查看依赖树中包含某个artifactId的依赖链（artifactId前面加上冒号）
+```
