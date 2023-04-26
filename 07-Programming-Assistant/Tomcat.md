@@ -8,7 +8,7 @@ categories:
 date: 2022-10-15 14:51:23
 ---
 
-+ 停止及重启应用
+### 停止及重启应用
 
 ```shell
 ps -ef | grep tomcat
@@ -18,14 +18,14 @@ kill -9 <No>
 tail -f logs/catalina.out
 ```
 
-+ 增加系统内存
+### 增加系统内存
 
 ```shell
 CATALINA_OPTS="$CATALINA_OPTS -server -Xms4096m -Xmx4096m -XX:MaxNewSize=1024m -XX:PermSize=512M -XX:MaxPermSize=1024m"
 JAVA_OPTS="$JAVA_OPTS -server -Xms4096m -Xmx4096m -XX:MaxNewSize=1024m -XX:PermSize=512M -XX:MaxPermSize=1024m"
 ```
 
-+ 查看当前系统占用内存
+### 查看当前系统占用内存
 
 + `/conf/tomcat-users.xml`开启内存管理
 
@@ -40,3 +40,29 @@ JAVA_OPTS="$JAVA_OPTS -server -Xms4096m -Xmx4096m -XX:MaxNewSize=1024m -XX:PermS
 </tomcat-users>  
 ```
 + tomcat 管理页面查看 `Server Status` admin/admin
+
+### 升级https
+
+#### 自己生成证书
+```shell
+keytool -genkey -alias mine -keypass password -keyalg RSA -keysize 1024 -validity 36500 -keystore mine.keystore -storepass password -deststoretype pkcs12
+```
+
+> 注: 自己生成的证书小程序无法使用, 需要去腾讯云平台下载ssl证书
+
+[腾讯云ssl证书](https://console.cloud.tencent.com/ssl?source=DNSPod&page=console&from=productoverview)
+
+#### 服务器配置
+
+tomcat/conf/server.xml
+
+```xml
+
+<Connector acceptCount="100" disableUploadTimeout="true" enableLookups="false"
+           keystoreFile="你的.keystore文件路径，这个文件名.keystore也要加上"
+           keystorePass="你刚才设定的密钥库密码"
+           port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+           maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
+           clientAuth="false" sslProtocol="TLS"/>
+
+```
