@@ -37,6 +37,9 @@ yarn upgrade [package | package@tag | package@version | @scope/]... [--ignore-en
 yarn remove <package...> # 删除包
 yarn list [--depth] [--pattern] # 列出所有包和它们的依赖
 yarn run [script] [<args>] # 运行脚本
+yarn upgrade --latest # 升级所有过时的包版本
+# npm install -g yarn-upgrade-all # 全局升级
+npx yarn-upgrade-all # 所有文件升级
 ```
 
 #### npm与yarn基本命令对比
