@@ -181,7 +181,7 @@ git clean -d -fx
 ### 忽略本地历史提交冲突强制合并
 
 ```shell
-git remote add origin https://192.168.100.49:8081/zhcloud/zh-web.git
+git remote add platform https://192.168.100.49:8081/zhcloud/zh-web.git
 git fetch platform
 git merge platform/master --allow-unrelated-histories
 ```
