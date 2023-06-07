@@ -16,6 +16,8 @@ ps aux | grep tomcat
 kill -9 <No>
 ./bin/startup.sh
 tail -f logs/catalina.out
+# 查询关键字前后十行信息
+rep -C 10 'key word' /usr/local/apache-tomcat-9.0.65/logs/catalina.out
 ```
 
 ### 增加系统内存
