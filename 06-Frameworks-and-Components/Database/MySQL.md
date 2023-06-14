@@ -31,3 +31,15 @@ character-set-server=utf8
 # 创建新表时将使用的默认存储引擎
 default-storage-engine=INNODB
 ```
+
+### CentOS操作mysql
+
+```shell
+mysql -u root # 第一次进入数据库
+set password for 'root'@'localhost' = password('xxxxxxxx') # 进入后修改密码
+mysql -u root -p # 再次进入数据库
+create database txsql; # 创建数据库
+use databasename; # 进入某个数据库
+exit; # 退出mysql命令行
+quit; # 退出mysql命令行
+```
