@@ -22,3 +22,9 @@ F12 > ctrl+shift+p
 
 
 + [谷歌浏览器chrome的vuejs devtools 插件的安装](https://www.cnblogs.com/alice-fee/p/8038367.html)
+
+## windows 配置 Chrome 每个tab页签打开开发者工具
+```shell
+cd C:\Program Files\Google\Chrome\Application # 进入系统命令目录
+chrome.exe --auto-open-devtools-for-tabs # 关闭所有浏览器窗口后用命令启动
+```

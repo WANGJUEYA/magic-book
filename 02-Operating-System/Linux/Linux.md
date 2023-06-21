@@ -109,6 +109,18 @@ firewall-cmd --query-port=9010/tcp
 firewall-cmd --list-ports
 ```
 
+## 服务器性能
+
+```shell
+free -h # 内存; top htop 也可
+cat /proc/cpuinfo | grep "cpu cores" # CPU核数
+df -h # 查询硬盘大小
+uname -a # 系统位数、内核版本
+du -sh * # 目录或文件占用磁盘大小
+sudo fdisk -l # 数据盘大小
+sudo parted /dev/sda1 print # 查询硬盘大小
+```
+
 ## 内存监控
 
 ### ps 查看进程及进程中线程当前CPU使用情况
