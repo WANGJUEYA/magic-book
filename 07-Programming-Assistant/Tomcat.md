@@ -18,6 +18,8 @@ kill -9 <No>
 tail -f logs/catalina.out
 # 查询关键字前后十行信息
 grep -C 10 'key word' /usr/local/apache-tomcat-9.0.65/logs/catalina.out
+# 匹配最后十条数据
+grep -C 10 'key word' /usr/local/apache-tomcat-9.0.65/logs/catalina.out | tail -10
 ```
 
 ### 增加系统内存
