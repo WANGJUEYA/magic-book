@@ -20,6 +20,9 @@ tail -f logs/catalina.out
 grep -C 10 'key word' /usr/local/apache-tomcat-9.0.65/logs/catalina.out
 # 匹配最后十条数据
 grep -C 10 'key word' /usr/local/apache-tomcat-9.0.65/logs/catalina.out | tail -10
+# 导出十分钟内的日志
+# sed -n '/开始时间/,/结束时间/p' catalina.out > 输出文件.log
+sed -n '/2023-07-11 09:10*/,/2023-07-11 09:15*/p' catalina.out > log0915.log
 ```
 
 ### 增加系统内存
