@@ -73,3 +73,48 @@ tomcat/conf/server.xml
            clientAuth="false" sslProtocol="TLS"/>
 
 ```
+
+
+### tomcat日志分割
+
+#### 安装`cronolog`
+
+```shell
+# 快捷安装
+yum localinstall http://rpmfind.net/linux/epel/7/x86_64/Packages/c/cronolog-1.6.2-14.el7.x86_64.rpm
+# 安装成功版本查询
+cronolog --version
+```
+
++ [安装参考](https://blog.csdn.net/goudaozuihou/article/details/124896224)
+
+#### 配置 `catalina.out`
+
+```out
+# 226行
+if [ -z "$CATALINA_OUT" ] ; then
+  CATALINA_OUT="$CATALINA_BASE"/logs/catalina.out
+fi
+
+# 修改为 =======>
+if [ -z "$CATALINA_OUT" ] ; then
+  CATALINA_OUT="$CATALINA_BASE"/logs/catalinaLog.%Y-%m-%d.out
+fi
+
+# 460 行，删除或者注释掉 =======> ps: tomcat9这行注释启动会报错, 不注释不影响使用
+# touch "$CATALINA_OUT"
+
+# 474行和484行两处修改
+
+org.apache.catalina.startup.Bootstrap "$@" start \
+  >> "$CATALINA_OUT" 2>&1 "&"
+
+=======>
+
+org.apache.catalina.startup.Bootstrap "$@" start 2>&1\
+  | /sbin/cronolog "$CATALINA_BASE"/logs/catalinaLog.%Y-%m-%d.out >> /dev/null &
+
+# 重新启动tomcat
+```
+
++ [配置参考](https://blog.51cto.com/u_15077537/4252000)
