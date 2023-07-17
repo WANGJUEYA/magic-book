@@ -3,10 +3,10 @@ title: ThreadLocal
 summary: ThreadLocal | 异步线程间变量传递
 tags:
 - Stream
-  categories:
+categories:
 - 04-Programming-Languages
 - Java
-  date: 2023-06-07 16:00:00
+date: 2023-06-07 16:00:00
 ---
 
 ### Spring请求的一次性缓存
