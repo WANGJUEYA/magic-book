@@ -15,7 +15,8 @@ mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc14 -Dversion=10.
 ```
 ## 将不在官方仓库中的jar包手动发布到仓库
 ```shell
-mvn deploy:deploy-file -Dpackaging=jar -Dfile=jar包文件地址,绝对路径 -DgroupId=组名 -DartifactId=项目名称 -Dversion=版本号 -DrepositoryId=私库id -Durl=私仓地址
+mvn source:jar install # 打包时增加源码包
+mvn deploy:deploy-file -Dpackaging=jar -Dfile=jar包文件地址,绝对路径 -Dsources=源码包地址 -DgroupId=组名 -DartifactId=项目名称 -Dversion=版本号 -DrepositoryId=私库id -Durl=私仓地址
 mvn deploy:deploy-file -Dpackaging=pom -Dfile=pom.xml            -DgroupId=组名 -DartifactId=项目名称 -Dversion=版本号 -DrepositoryId=私库id -Durl=私仓地址
 ```
 
