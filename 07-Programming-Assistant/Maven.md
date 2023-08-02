@@ -13,6 +13,11 @@ date: 2022-10-15 15:27:39
 ```shell
 mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc14 -Dversion=10.2.0.2.0 -Dpackaging=jar -Dfile=E:\oracle\ojdbc14-10.2.0.2.0.jar
 ```
+## 将不在官方仓库中的jar包手动发布到仓库
+```shell
+mvn deploy:deploy-file -Dpackaging=jar -Dfile=jar包文件地址,绝对路径 -DgroupId=组名 -DartifactId=项目名称 -Dversion=版本号 -DrepositoryId=私库id -Durl=私仓地址
+mvn deploy:deploy-file -Dpackaging=pom -Dfile=pom.xml            -DgroupId=组名 -DartifactId=项目名称 -Dversion=版本号 -DrepositoryId=私库id -Durl=私仓地址
+```
 
 ## 查找依赖
 
