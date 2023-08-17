@@ -113,12 +113,21 @@ firewall-cmd --list-ports
 
 ```shell
 free -h # 内存; top htop 也可
+cat /proc/meminfo | grep MemTotal # 内存总数
 cat /proc/cpuinfo | grep "cpu cores" # CPU核数
+cat /proc/cpuinfo | grep "model name"
 df -h # 查询硬盘大小
 uname -a # 系统位数、内核版本
 du -sh * # 目录或文件占用磁盘大小
 sudo fdisk -l # 数据盘大小
 sudo parted /dev/sda1 print # 查询硬盘大小
+sudo yum install nvidia-smi 
+nvidia-smi -L # 查看显卡信息(部分云服务器是没有该参数么)
+# centerOS 查看gpu使用状态
+sudo yum install epel-release # 安装
+sudo yum install gpustat # 安装
+watch -n 2 --color gpustat --c # 使用
+watch -n 0.5 -d nvidia-smi # 实时刷新
 ```
 
 ## 内存监控

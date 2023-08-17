@@ -33,3 +33,17 @@ docker start $contaniner-id
 docker stop $contaniner-id
 ```
 
+### 其他常用命令
+
+```shell
+docker -v # 查看当前版本
+```
+
+
+## Windows10 安装 Docker 的详细教程
+
++ [官方下线地址](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?utm_source=docker)
+
+## 参考链接
+
++ [Windows10 Docker安装详细教程](https://zhuanlan.zhihu.com/p/441965046)

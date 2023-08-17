@@ -10,6 +10,10 @@ categories:
 date: 2022-10-15 22:17:33
 ---
 
+## Python安装
+
++ [官网地址](https://www.python.org/)
+
 ## Python基础知识
 
 
@@ -51,7 +55,14 @@ def func_name(param_name):
 ```bash
 cd {安装路径}/Scripts
 pip install {package}
+pip install --upgrade {package}
 ```
+### conda
+
+conda是一种可用于python的包管理工具
+
++ [conda 安装](https://zhuanlan.zhihu.com/p/591091259)
++ [conda 简单介绍](https://baijiahao.baidu.com/s?id=1677257712310498702&wfr=spider&for=pc)
 
 ## 字符串转json
 
