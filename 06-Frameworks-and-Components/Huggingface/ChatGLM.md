@@ -16,20 +16,13 @@ date: 2023-08-16 16:21:51
 
 ### 提前安装
 
-+ [python 3.0+](https://www.python.org/)
-+ [pytorch 过往版本](https://pytorch.org/get-started/previous-versions/)
++ [conda](https://docs.conda.io/en/latest/miniconda.html#windows-installers) # python包管理工具、可以安装一个内置的 [python](https://www.python.org/)
 
-### 入门级 ChatGLM 配置教程
-
-
-## 安装 Transformer
-
-Transformer 是 <u>Hugging face</u> 提供的自然语言处理工具库，也是当前比较流行的机器学习工具库。
++ [pytorch](https://pytorch.org) # 根据 CUDA 版本选择正确的安装命令; `nvidia-smi` 查看对应 version
 
 ```shell
-# pip 是 python 包管理工具, Python 3.4+ 自带pip工具
-pip install transformers==4.26.1 # 安装指定版本
-pip install tensorflow
+# 当前系统查询出来 CUDA版本为 11.6
+conda install pytorch torchvision torchaudio pytorch-cuda=11.6 -c pytorch -c nvidia
 ```
 
 ## 下载并启动 chatGLM 代码
@@ -37,20 +30,21 @@ pip install tensorflow
 ```shell
 # 下载仓库代码
 git clone git@github.com:THUDM/ChatGLM-6B.git # https://github.com/THUDM/ChatGLM-6B.git
-# 运行web示例demo; 需要先安装`gradio`
-pip install gradio
+```
+
+### 运行web示例demo; 需要先安装`gradio`
+```shell
+conda install gradio
 python web_demo.py
 ```
 
-测试安装是否成功
+## docker部署`Langchain-Chatchat` 
+
+> `Langchain-Chatchat` 一个基于 `chatGLM` 的本地知识库实现
 
 ```shell
-from transformers import pipeline  # 引入一个pipeline试试看，如果不报错说明安装成功
-# 因为NLP通常是多个任务顺序而成，所以通常使用pipeline，流水线工作
+git clone git@github.com:chatchat-space/Langchain-Chatchat.git
 ```
-
-
-
 ## 名词解释
 
 ### NLP
@@ -68,10 +62,30 @@ Hugging face 起初是一家聊天机器人初创服务商，其在github上开�
 
 PyTorch 是一个开源的Python机器学习库，Hugging face很多模型需要前置安装 PyTorch
 
+### Transformer
+
+Transformer 是 <u>Hugging face</u> 提供的自然语言处理工具库，也是当前比较流行的机器学习工具库。
+因为NLP通常是多个任务顺序而成，通常使用 `transformer` 中 `pipeline` 进行流水线工作
+
+```shell
+# pip 是 python 包管理工具, Python 3.4+ 自带pip工具
+pip install transformers==4.26.1 # 安装指定版本
+pip install tensorflow
+# 如果你是conda的话
+conda install -c huggingface transformers  # 4.0以后的版本才会有
+```
+
+### requirements.txt
+
+Python项目中必须包含一个 requirements.txt 文件，用于记录所有依赖包及其精确的版本号。以便新环境部署。
+```shell
+pip freeze > requirements.txt # 生成requirements.txt
+pip install -r requirements.txt # 从requirements.txt安装依赖
+```
+
 ## 参考资料
 
-+ [Python pip 安装与使用](https://www.runoob.com/w3cnote/python-pip-install-usage.html)
-+ [Huggingface 超详细介绍](https://zhuanlan.zhihu.com/p/535100411)
 + [Hugging face 官方网站](https://huggingface.co/models)
++ [Huggingface 超详细介绍](https://zhuanlan.zhihu.com/p/535100411)
 + [ChatGLM-6B 代码仓库](https://github.com/THUDM/ChatGLM-6B)
 + [从零开始的ChatGLM 配置详细教程](https://blog.csdn.net/qq_51116518/article/details/130299417)

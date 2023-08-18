@@ -60,9 +60,61 @@ pip install --upgrade {package}
 ### conda
 
 conda是一种可用于python的包管理工具
+如果系统没有安装python环境，也可以使用 conda 内置的python安装包
 
-+ [conda 安装](https://zhuanlan.zhihu.com/p/591091259)
++ [官方文档](https://docs.conda.io/en/latest/miniconda.html#windows-installers)
 + [conda 简单介绍](https://baijiahao.baidu.com/s?id=1677257712310498702&wfr=spider&for=pc)
+
+安装成功后使用对应的控制面板 >>> `Anaconda Prompt`
+```shell
+conda --version
+python --version
+pip --version
+```
+
+#### 设置默认下载的镜像地址
+
+注意: 可以先安装包、如果包下载异常才考虑用镜像 或者 考虑用 pip 下载工具
+
+```shell
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ # 增加清华大学镜像源
+conda config --remove channels <镜像源>  # 删除指定镜像源镜像
+conda config --remove-key channels # 删除全部镜像源
+conda config --write # 保存配置
+conda config --default-channel # windows环境无法使用该命令设置默认镜像源
+conda config --set-default-channel https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free # 将某镜像设置为默认通道
+conda config --show channels # 展示所有镜像源
+```
+
+#### conda创建环境
+
++ conda是为了解决不同python项目依赖差异的问题, 可以创建多个环境处理这个问题
+
+```shell
+conda env list # 查看所有已经传教的环境
+conda create --name <envname> # 创建一个新的conda环境
+conda activate <envname> # 激活新的环境
+conda deactivate # 退出环境
+conda env remove --name <envname> # 删除环境
+conda install --file requirements.txt # 安装项目要求的环境依赖项
+conda list # 验证所有依赖项是否已经安装正确
+```
+
+#### conda简单命令
+
+```shell
+conda install <package> # 安装包
+conda install <package>=<version> # 安装指定版本包
+conda update <package> # 更新包
+conda remove <package> # 卸载包
+conda search <package> # 搜索包
+conda list [-n [env_name]] # 展示当前环境安装的所有包 -n 指定环境名称
+conda list <package> # 查看指定包版本信息
+conda info --envs # 查看环境中的安装包版本
+conda clean --all # 清理不再使用的包
+conda env export > environment.yml # 导出环境配置
+conda env create --file environment.yml # 导入环境配置
+```
 
 ## 字符串转json
 
