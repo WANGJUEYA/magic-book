@@ -18,6 +18,17 @@ date: 2023-08-16 16:21:51
 
 + [conda](https://docs.conda.io/en/latest/miniconda.html#windows-installers) # python包管理工具、可以安装一个内置的 [python](https://www.python.org/)
 
+```shell
+# 添加相关镜像源 加快下载速度
+conda config --add channels https://pypi.tuna.tsinghua.edu.cn/simple/ # python 软件包索引源
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+
+conda config --show channels # 展示所有镜像源
+```
+
 + [pytorch](https://pytorch.org) # 根据 CUDA 版本选择正确的安装命令; `nvidia-smi` 查看对应 version
 
 ```shell
@@ -27,14 +38,46 @@ conda install pytorch torchvision torchaudio pytorch-cuda=11.6 -c pytorch -c nvi
 
 ## 下载并启动 chatGLM 代码
 
+### 下载仓库代码
+
 ```shell
-# 下载仓库代码
 git clone git@github.com:THUDM/ChatGLM-6B.git # https://github.com/THUDM/ChatGLM-6B.git
 ```
 
-### 运行web示例demo; 需要先安装`gradio`
+### 下载预处理模型
+
 ```shell
-conda install gradio
+git lfs install # 大文件存储工具
+# 在项目根目录下创建`THUDM`模型文件夹，同时进入目录克隆模型[注册一个账户配置 ssh 可以下载更快]
+git clone git@hf.co:THUDM/chatglm-6b-int4 # https://huggingface.co/THUDM/chatglm-6b-int4
+cd chatglm-6b-int4
+# 大文件下载；如果不能下载，前往下方地址手动下载模型
+git lfs pull
+```
+
+[清华大学模型下载地址](https://cloud.tsinghua.edu.cn/d/674208019e314311ab5c/)
+
+| 模型名称        | 模型大小 | 模型所需GPT与内存    |
+| --------------- | -------- | -------------------- |
+| chatglm-6b      | 12.4g    | 最低13G显存，16G内存 |
+| chatglm-6b-int8 | 7.2G     | 最低8G显存       |    
+| chatglm-6b-int4 | 3.6G     | 最低4.3G显存         |
+
+### 通过conda创建一个克隆环境；也可以直接忽略该步骤使用base环境安装依赖
+
+```shell
+conda create -n chatglm --clone base # 创建一个克隆环境
+conda activate chatglm # 激活新创建的环境; conda deactivate # 退出当前环境
+```
+
+### 运行web示例demo; 需要先安装`gradio`
+
+```shell
+conda install --file requirements.txt # 提示找不到包时可增加其他镜像源
+# pip install -r requirements.txt -i https://mirror.sjtu.edu.cn/pypi/web/simple
+pip install mdtex2html torch cpm_kernels # 提示找不到包尝试用pip命令安装
+# 下载模型文件, 创建`THUDM`文件夹
+
 python web_demo.py
 ```
 
@@ -45,6 +88,7 @@ python web_demo.py
 ```shell
 git clone git@github.com:chatchat-space/Langchain-Chatchat.git
 ```
+
 ## 名词解释
 
 ### NLP

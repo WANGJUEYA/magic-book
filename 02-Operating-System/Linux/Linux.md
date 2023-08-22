@@ -117,6 +117,7 @@ cat /proc/meminfo | grep MemTotal # 内存总数
 cat /proc/cpuinfo | grep "cpu cores" # CPU核数
 cat /proc/cpuinfo | grep "model name"
 df -h # 查询硬盘大小
+du -h --max-depth=1 /data # 查看一级文件夹占用磁盘大小
 uname -a # 系统位数、内核版本
 du -sh * # 目录或文件占用磁盘大小
 sudo fdisk -l # 数据盘大小

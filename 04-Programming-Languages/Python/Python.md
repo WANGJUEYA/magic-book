@@ -76,7 +76,10 @@ pip --version
 
 注意: 可以先安装包、如果包下载异常才考虑用镜像 或者 考虑用 pip 下载工具
 
+[使用conda添加镜像源](https://www.python100.com/html/T3QF9436G2NX.html)
+
 ```shell
+# https://mirrors.tuna.tsinghua.edu.cn/help/pypi/
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ # 增加清华大学镜像源
 conda config --remove channels <镜像源>  # 删除指定镜像源镜像
 conda config --remove-key channels # 删除全部镜像源
@@ -86,6 +89,16 @@ conda config --set-default-channel https://mirrors.tuna.tsinghua.edu.cn/anaconda
 conda config --show channels # 展示所有镜像源
 ```
 
+添加常用的镜像源
+
+```shell
+conda config --add channels https://pypi.tuna.tsinghua.edu.cn/simple/ # python 软件包索引源
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+```
+
 #### conda创建环境
 
 + conda是为了解决不同python项目依赖差异的问题, 可以创建多个环境处理这个问题
@@ -93,6 +106,10 @@ conda config --show channels # 展示所有镜像源
 ```shell
 conda env list # 查看所有已经传教的环境
 conda create --name <envname> # 创建一个新的conda环境
+conda create -n chatglm --clone base # 创建一个克隆环境
+conda create --prefix=E:/data/miniconda3/envs/chatGLM # 显式的指定路径，激活也需要指定路径，比较麻烦，可以直接更改环境地址
+conda config --append envs_dirs E:/data/miniconda3/envs # 配置环境所在的默认路径
+conda create --name snapshot --clone myenv # 从已有的环境克隆配置新环境
 conda activate <envname> # 激活新的环境
 conda deactivate # 退出环境
 conda env remove --name <envname> # 删除环境
