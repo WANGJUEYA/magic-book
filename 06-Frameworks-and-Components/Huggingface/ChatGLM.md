@@ -14,9 +14,11 @@ date: 2023-08-16 16:21:51
 + 基本思路是学会使用基础模型、学会微调基础模型、了解并掌握向量数据库的使用(实时数据交互)、完成业务接入 <u>NLP</u> 服务
 + 本文是系列文章第一篇：启动 ChatGLM 模型
 
-### 提前安装
+## 提前安装
 
-+ [conda](https://docs.conda.io/en/latest/miniconda.html#windows-installers) # python包管理工具、可以安装一个内置的 [python](https://www.python.org/)
+### conda
+
++ [conda](https://docs.conda.io/en/latest/miniconda.html#windows-installers) 是python包管理工具、可以安装一个内置的 [python](https://www.python.org/)
 
 ```shell
 # 添加相关镜像源 加快下载速度
@@ -29,11 +31,31 @@ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/
 conda config --show channels # 展示所有镜像源
 ```
 
++ 检查是否安装成功
+
+```shell
+conda --version
+```
+
+### pytorch
+
 + [pytorch](https://pytorch.org) # 根据 CUDA 版本选择正确的安装命令; `nvidia-smi` 查看对应 version
 
 ```shell
-# 当前系统查询出来 CUDA版本为 11.6
-conda install pytorch torchvision torchaudio pytorch-cuda=11.6 -c pytorch -c nvidia
+# 当前系统查询出来 CUDA版本为 11.6；前往历史版本下载对应的环境版本
+conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia
+```
+
+### MinGW
+
++ 安装 [MinGW](https://www.mingw-w64.org/downloads/#w64devkit)
+
++ 推荐使用 [TDM-GCC](https://jmeubank.github.io/tdm-gcc/) 安装
+
++ 检查是否安装成功
+
+```shell
+gcc -v
 ```
 
 ## 下载并启动 chatGLM 代码
@@ -47,12 +69,17 @@ git clone git@github.com:THUDM/ChatGLM-6B.git # https://github.com/THUDM/ChatGLM
 ### 下载预处理模型
 
 ```shell
-git lfs install # 大文件存储工具
+# git submodule add git@hf.co:THUDM/chatglm-6b-int4 ./THUDM/chatglm-6b-int4
 # 在项目根目录下创建`THUDM`模型文件夹，同时进入目录克隆模型[注册一个账户配置 ssh 可以下载更快]
 git clone git@hf.co:THUDM/chatglm-6b-int4 # https://huggingface.co/THUDM/chatglm-6b-int4
+
+# git大文件存储工具
+git lfs install
 cd chatglm-6b-int4
-# 大文件下载；如果不能下载，前往下方地址手动下载模型
+# 大文件下载；如果不能下载，前往下方地址手动下载模型置于当前文件夹
 git lfs pull
+# 如果出现 `Error updating the git index Unable to process path pytorch_model.binUnable to process path pytorch_model.bin`; 尝试执行下面语句
+git reset --hard # 执行之后重新拉取代码即可
 ```
 
 [清华大学模型下载地址](https://cloud.tsinghua.edu.cn/d/674208019e314311ab5c/)
@@ -70,23 +97,34 @@ conda create -n chatglm --clone base # 创建一个克隆环境
 conda activate chatglm # 激活新创建的环境; conda deactivate # 退出当前环境
 ```
 
-### 运行web示例demo; 需要先安装`gradio`
+### 运行web示例demo
 
 ```shell
 conda install --file requirements.txt # 提示找不到包时可增加其他镜像源
 # pip install -r requirements.txt -i https://mirror.sjtu.edu.cn/pypi/web/simple
 pip install mdtex2html torch cpm_kernels # 提示找不到包尝试用pip命令安装
 # 下载模型文件, 创建`THUDM`文件夹
-
+# 需要更改文件上方模型路径; 原为 `THUDM/chatglm-6b` > `THUDM\chatglm-6b-int4`; win环境下文件分隔符不同
 python web_demo.py
 ```
 
++ 项目加载模型数据
+
+![项目加载模型数据](ChatGLM/项目加载模型数据.png)
+
+    
 ## docker部署`Langchain-Chatchat` 
 
 > `Langchain-Chatchat` 一个基于 `chatGLM` 的本地知识库实现
 
 ```shell
-git clone git@github.com:chatchat-space/Langchain-Chatchat.git
+git clone git@github.com:chatchat-space/Langchain-Chatchat.git # https://github.com/chatchat-space/Langchain-Chatchat
+```
+
+## 其他代码仓库地址
+
+```shell
+git clone git@github.com:THUDM/CodeGeeX2.git # https://github.com/THUDM/CodeGeeX2
 ```
 
 ## 名词解释
@@ -131,5 +169,4 @@ pip install -r requirements.txt # 从requirements.txt安装依赖
 
 + [Hugging face 官方网站](https://huggingface.co/models)
 + [Huggingface 超详细介绍](https://zhuanlan.zhihu.com/p/535100411)
-+ [ChatGLM-6B 代码仓库](https://github.com/THUDM/ChatGLM-6B)
 + [从零开始的ChatGLM 配置详细教程](https://blog.csdn.net/qq_51116518/article/details/130299417)
