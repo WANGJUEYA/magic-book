@@ -20,15 +20,28 @@ date: 2023-08-16 16:21:51
 
 + [conda](https://docs.conda.io/en/latest/miniconda.html#windows-installers) 是python包管理工具、可以安装一个内置的 [python](https://www.python.org/)
 
++ [配置阿里数据源](https://developer.aliyun.com/mirror/anaconda)
 ```shell
-# 添加相关镜像源 加快下载速度
-conda config --add channels https://pypi.tuna.tsinghua.edu.cn/simple/ # python 软件包索引源
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
-
+conda config --set show_channel_urls yes
+conda clean -i
 conda config --show channels # 展示所有镜像源
+```
++ .condarc 文件配置
+```text
+channels:
+  - defaults
+show_channel_urls: true
+default_channels:
+  - http://mirrors.aliyun.com/anaconda/pkgs/main
+  - http://mirrors.aliyun.com/anaconda/pkgs/r
+  - http://mirrors.aliyun.com/anaconda/pkgs/msys2
+custom_channels:
+  conda-forge: http://mirrors.aliyun.com/anaconda/cloud
+  msys2: http://mirrors.aliyun.com/anaconda/cloud
+  bioconda: http://mirrors.aliyun.com/anaconda/cloud
+  menpo: http://mirrors.aliyun.com/anaconda/cloud
+  pytorch: http://mirrors.aliyun.com/anaconda/cloud
+  simpleitk: http://mirrors.aliyun.com/anaconda/cloud
 ```
 
 + 检查是否安装成功
@@ -87,10 +100,12 @@ git reset --hard # 执行之后重新拉取代码即可
 | 模型名称        | 模型大小 | 模型所需GPT与内存    |
 | --------------- | -------- | -------------------- |
 | chatglm-6b      | 12.4g    | 最低13G显存，16G内存 |
-| chatglm-6b-int8 | 7.2G     | 最低8G显存       |    
+| chatglm-6b-int8 | 7.2G     | 最低8G显存       |
 | chatglm-6b-int4 | 3.6G     | 最低4.3G显存         |
 
-### 通过conda创建一个克隆环境；也可以直接忽略该步骤使用base环境安装依赖
+### 通过conda创建一个克隆环境
+
+也可以直接忽略该步骤使用base环境安装依赖
 
 ```shell
 conda create -n chatglm --clone base # 创建一个克隆环境
@@ -112,7 +127,7 @@ python web_demo.py
 
 ![项目加载模型数据](ChatGLM/项目加载模型数据.png)
 
-    
+
 ## docker部署`Langchain-Chatchat` 
 
 > `Langchain-Chatchat` 一个基于 `chatGLM` 的本地知识库实现
