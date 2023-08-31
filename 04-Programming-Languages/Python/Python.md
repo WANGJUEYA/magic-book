@@ -57,19 +57,59 @@ cd {安装路径}/Scripts
 pip install {package}
 pip install --upgrade {package}
 ```
+
 ### conda
 
 conda是一种可用于python的包管理工具
 如果系统没有安装python环境，也可以使用 conda 内置的python安装包
 
 + [官方文档](https://docs.conda.io/en/latest/miniconda.html#windows-installers)
+
+```shell
+# linux安装 miniconda
+wget -c https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+chmod 777 Miniconda3-latest-Linux-x86_64.sh
+sh Miniconda3-latest-Linux-x86_64.sh # 是否初始化 miniconda3 选择 yes
+```
+
 + [conda 简单介绍](https://baijiahao.baidu.com/s?id=1677257712310498702&wfr=spider&for=pc)
 
-安装成功后使用对应的控制面板 >>> `Anaconda Prompt`
+windows 安装成功后使用对应的控制面板 >>> `Anaconda Prompt`
+
 ```shell
+# 如果找不到控制面板，进入安装目录
+python .\Lib\_nsis.py mkmenus
 conda --version
 python --version
 pip --version
+```
+
+#### [配置阿里数据源](https://developer.aliyun.com/mirror/anaconda)
+
+```shell
+conda config --set show_channel_urls yes # windows 生成 .condarc 文件配置
+conda clean -i # 配置完成后，清理索引缓存
+conda config --show channels # 展示所有镜像源
+```
+
++ 用户目录下 .condarc 文件配置
+
+```text
+channels:
+  - defaults
+show_channel_urls: true
+default_channels:
+  - http://mirrors.aliyun.com/anaconda/pkgs/main
+  - http://mirrors.aliyun.com/anaconda/pkgs/r
+  - http://mirrors.aliyun.com/anaconda/pkgs/msys2
+custom_channels:
+  conda-forge: http://mirrors.aliyun.com/anaconda/cloud
+  msys2: http://mirrors.aliyun.com/anaconda/cloud
+  bioconda: http://mirrors.aliyun.com/anaconda/cloud
+  menpo: http://mirrors.aliyun.com/anaconda/cloud
+  pytorch: http://mirrors.aliyun.com/anaconda/cloud
+  simpleitk: http://mirrors.aliyun.com/anaconda/cloud
 ```
 
 #### 设置默认下载的镜像地址
@@ -92,7 +132,6 @@ conda config --show channels # 展示所有镜像源
 添加常用的镜像源
 
 ```shell
-conda config --add channels https://pypi.tuna.tsinghua.edu.cn/simple/ # python 软件包索引源
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
@@ -120,6 +159,7 @@ conda list # 验证所有依赖项是否已经安装正确
 #### conda简单命令
 
 ```shell
+conda update conda # 更新最新版本 conda
 conda install <package> # 安装包
 conda install <package>=<version> # 安装指定版本包
 conda update <package> # 更新包

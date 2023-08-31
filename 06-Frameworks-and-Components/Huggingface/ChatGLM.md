@@ -21,12 +21,14 @@ date: 2023-08-16 16:21:51
 + [conda](https://docs.conda.io/en/latest/miniconda.html#windows-installers) 是python包管理工具、可以安装一个内置的 [python](https://www.python.org/)
 
 + [配置阿里数据源](https://developer.aliyun.com/mirror/anaconda)
+
 ```shell
-conda config --set show_channel_urls yes
-conda clean -i
+conda config --set show_channel_urls yes # windows 生成 .condarc 文件配置
+conda clean -i # 配置完成后，清理索引缓存;JSONDecodeError 异常可以尝试执行该命令
 conda config --show channels # 展示所有镜像源
 ```
-+ .condarc 文件配置
+
++ 用户目录下 .condarc 文件配置
 ```text
 channels:
   - defaults
@@ -50,11 +52,20 @@ custom_channels:
 conda --version
 ```
 
++ 创建一个新的项目环境；后续所有安装都在该环境下进行
+
+```shel
+conda create -n chatglm python=3.10 # 创建一个新的环境，需要指定python版本
+conda env list # 展示所有环境 conda env remove --name chatglm
+conda activate chatglm # 激活新创建的环境; conda deactivate # 退出当前环境
+```
+
 ### pytorch
 
 + [pytorch](https://pytorch.org) # 根据 CUDA 版本选择正确的安装命令; `nvidia-smi` 查看对应 version
 
 ```shell
+nvidia-smi # 查询显存大小，至少需要4.3G显存(window默认使用 GPU专用内存)
 # 当前系统查询出来 CUDA版本为 11.6；前往历史版本下载对应的环境版本
 conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia
 ```
@@ -103,19 +114,18 @@ git reset --hard # 执行之后重新拉取代码即可
 | chatglm-6b-int8 | 7.2G     | 最低8G显存       |
 | chatglm-6b-int4 | 3.6G     | 最低4.3G显存         |
 
-### 通过conda创建一个克隆环境
-
-也可以直接忽略该步骤使用base环境安装依赖
-
-```shell
-conda create -n chatglm --clone base # 创建一个克隆环境
-conda activate chatglm # 激活新创建的环境; conda deactivate # 退出当前环境
-```
-
 ### 运行web示例demo
 
 ```shell
 conda install --file requirements.txt # 提示找不到包时可增加其他镜像源
+
+# 添加清华镜像源
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+conda config --show channels
+
 # pip install -r requirements.txt -i https://mirror.sjtu.edu.cn/pypi/web/simple
 pip install mdtex2html torch cpm_kernels # 提示找不到包尝试用pip命令安装
 # 下载模型文件, 创建`THUDM`文件夹
@@ -127,19 +137,82 @@ python web_demo.py
 
 ![项目加载模型数据](ChatGLM/项目加载模型数据.png)
 
+## 无GPU部署`JittorLLMs`
 
-## docker部署`Langchain-Chatchat` 
+### 更新`jittor`环境
+
+```shell
+git clone git@github.com:Jittor/JittorLLMs.git
+cd JittorLLMs
+conda create -n jittor-chatglm python=3.10 # 新建一个环境尝试简单显存要求
+conda activate jittor-chatglm
+# -i 指定用jittor的源， -I 强制重装Jittor版torch
+pip install -r requirements.txt -i https://pypi.jittor.org/simple -I
+```
+
++ requirements.txt 依赖声明如下
+
+```text
+# requirements.txt
+jittor == 1.3.8.5
+jtorch == 0.1.7
+torch
+torchvision
+```
+
+
+
+## ~~部署`Langchain-Chatchat`~~ 
 
 > `Langchain-Chatchat` 一个基于 `chatGLM` 的本地知识库实现
+
+### 下载代码
 
 ```shell
 git clone git@github.com:chatchat-space/Langchain-Chatchat.git # https://github.com/chatchat-space/Langchain-Chatchat
 ```
 
+### 下载模型
+
+可参考上一节使用`git lfs pull`进行大文件下载
+
+以本项目中默认使用的 LLM 模型 [THUDM/chatglm2-6b](https://huggingface.co/THUDM/chatglm2-6b) 与 Embedding 模型 [moka-ai/m3e-base](https://huggingface.co/moka-ai/m3e-base) 为例 
+
+```shell
+git clone git@hf.co:THUDM/chatglm-6b-int4 # https://huggingface.co/THUDM/chatglm-6b-int4
+git clone git@hf.co:moka-ai/m3e-base # https://huggingface.co/moka-ai/m3e-base
+```
+
+### 更改配置文件
+
+复制项目文件 `./configs/model_config.py.example` > ``./configs/model_config.py`
+
+复制项目文件 `./configs/server_config.py.example` > ``./configs/model_config.py`
+
+
+
+### 初始化知识库
+
+```shell
+conda create -n chatchat python=3.10 # 新的conda环境
+conda activate chatchat
+conda install --file requirements.txt
+```
+
 ## 其他代码仓库地址
 
 ```shell
-git clone git@github.com:THUDM/CodeGeeX2.git # https://github.com/THUDM/CodeGeeX2
+git clone git@github.com:THUDM/ChatGLM2-6B.git # https://github.com/THUDM/ChatGLM2-6B # chatGLM 升级内容
+
+git clone git@github.com:THUDM/CodeGeeX2.git # https://github.com/THUDM/CodeGeeX2 # chatGLM 代码能力加强模型
+
+git clone git@hf.co:TMElyralab/lyraChatGLM.git # https://huggingface.co/TMElyralab/lyraChatGLM # 对 ChatGLM-6B 进行推理加速，最高可以实现 9000+ tokens/s 的推理速度
+
+git clone git@github.com:wangzhaode/ChatGLM-MNN.git # https://github.com/wangzhaode/ChatGLM-MNN # 一个基于 MNN 的 ChatGLM-6B C++ 推理实现，支持根据显存大小自动分配计算任务给 GPU 和 CPU
+
+git clone git@github.com:Jittor/JittorLLMs.git # https://github.com/Jittor/JittorLLMs # 最低3G显存或者没有显卡都可运行 ChatGLM-6B FP16， 支持Linux、windows、Mac部署
+
+git clone git@github.com:MegEngine/InferLLM.git # https://github.com/MegEngine/InferLLM # 轻量级 C++ 推理，可以实现本地 x86，Arm 处理器上实时聊天，手机上也同样可以实时运行，运行内存只需要 4G
 ```
 
 ## 名词解释
