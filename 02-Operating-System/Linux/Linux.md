@@ -37,6 +37,7 @@ ls # test3.txt
 touch test{1..10}.txt
 ls # test10.txt test1.txt test2.txt test3.txt test4.txt test5.txt test6.txt test7.txt test8.txt test9.txt
 rm -rf `ls ../test/|grep -v test2` # 将反引号内的结果作为下一条命令的参数
+rm -rf `ls -a | grep access_log.2022` # 删除文件名匹配； grep -e 表示可以是正则匹配
 ls # test2.txt
 ```
 

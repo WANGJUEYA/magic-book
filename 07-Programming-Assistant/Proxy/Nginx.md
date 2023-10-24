@@ -35,7 +35,7 @@ yum install -y openssl openssl-devel
 ### 2. 下载
 + 直接下载 .tar.gz 安装包，地址：https://nginx.org/en/download.html
 ~~~shell
-wget -c https://nginx.org/download/nginx-1.22.1.tar.gz
+wget -c https://nginx.org/download/nginx-1.24.0.tar.gz
 ~~~
 
 ### 3. 安装
@@ -135,6 +135,25 @@ http {
         location = /50x.html {
             root   html;
         }
+    }
+}
+```
+
+### 由一个端口代理到另外一个端口
+
+```nginx.conf
+server {
+	listen 9003;
+	server_name redirectV3;    
+
+    location / {
+        proxy_pass_request_headers on;
+        proxy_pass       http://127.0.0.1:9010;
+        proxy_set_header Host 127.0.0.1;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
     }
 }
 ```

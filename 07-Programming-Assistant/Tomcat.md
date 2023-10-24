@@ -27,6 +27,7 @@ sed -n '/2023-07-11 09:10*/,/2023-07-11 09:15*/p' catalina.out > log0915.log
 
 ### 增加系统内存
 
+`TOMCAT_HOME/bin/catalina.sh`文件最前加入
 ```shell
 CATALINA_OPTS="$CATALINA_OPTS -server -Xms4096m -Xmx4096m -XX:MaxNewSize=1024m -XX:PermSize=512M -XX:MaxPermSize=1024m"
 JAVA_OPTS="$JAVA_OPTS -server -Xms4096m -Xmx4096m -XX:MaxNewSize=1024m -XX:PermSize=512M -XX:MaxPermSize=1024m"
