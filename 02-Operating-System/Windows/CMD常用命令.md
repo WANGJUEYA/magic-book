@@ -48,3 +48,9 @@ ipconfig /flushdns
 ```bash
 tree >> ../tree.txt
 ```
+
+### 删除文件夹
+
+```bash
+rmdir /s /q 文件夹名
+```
