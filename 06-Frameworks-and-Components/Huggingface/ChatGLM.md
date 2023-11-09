@@ -5,6 +5,9 @@ summary: Huggingface 模型初尝试 | 启动 ChatGLM 模型
 tags:
   - ChatGLM
   - Huggingface
+categories:
+  - 06-Frameworks-and-Components
+  - Huggingface
 date: 2023-08-16 16:21:51
 ---
 

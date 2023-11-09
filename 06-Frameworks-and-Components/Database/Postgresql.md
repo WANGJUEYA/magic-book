@@ -4,6 +4,9 @@ summary: Postgresql
 tags:
   - Database
   - Postgresql
+categories:
+  - 06-Frameworks-and-Components
+  - Database
 date: 2023-07-16 20:24:00
 ---
 
