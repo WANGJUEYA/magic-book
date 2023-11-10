@@ -12,6 +12,8 @@ date: 2023-11-10 11:27:00
 
 ## 重写bean实例
 
+### 自定义bean覆盖
+
 ```java
 
 @Component
@@ -45,4 +47,12 @@ public class MyBeanDefinitionRegistryPostProcessor implements BeanDefinitionRegi
 
     }
 }
+```
+
+### 自定义移除重写的bean
+
+```java
+@ComponentScan(
+        basePackages = {"com.basic", "com.system", "com.business"},
+        excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = "com.zh.core.service.SysUserBasicService"))
 ```
