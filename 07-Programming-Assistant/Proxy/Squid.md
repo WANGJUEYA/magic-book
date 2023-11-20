@@ -17,7 +17,7 @@ date: 2023-11-08 14:43:00
 在 Windows 平台上安装 Squid 分为以下几个步骤：
 
 1. 下载 Squid for Windows  
-   访问 [Squid 官方网站（https://www.squid-cache.org/）](https://www.squid-cache.org/) ，在下载页面找到适用于 Windows 的 Squid 版本，下载对应的 zip 文件。
+   访问 [Squid 官方网站（https://www.squid-cache.org/）](https://wiki.squid-cache.org/SquidFaq/BinaryPackages) ，在下载页面找到适用于 Windows 的 Squid 版本，下载对应的 zip 文件。
 2. 解压文件  
    将下载的 zip 文件解压到一个合适的位置，例如 C:\Squid。
 3. 配置 Squid  (不配置可以使用服务器自己的dns解析)
