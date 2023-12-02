@@ -74,7 +74,7 @@ File > Setting > Editor > Code Style > Java > Code Generation
 
 #### customGetter
 
-```thymeleaftemplatesfragmentexpressions
+```text thymeleaftemplatesfragmentexpressions
 #if($field.modifierStatic)
 static ##
 #end
@@ -87,7 +87,7 @@ return $field.name;
 
 #### customSetter
 
-```thymeleaftemplatesfragmentexpressions
+```text thymeleaftemplatesfragmentexpressions
 #set($paramName = $helper.getParamName($field, $project))
 public ##
 #if($field.modifierStatic)
@@ -109,6 +109,18 @@ return self();
 #end
 }
 ```
+
+### 快捷键快速生成当前日期
+
+File > Settings > Editor > Live Template
+
+![增加模板](IntelliJ-IDEA/自定义快捷键-增加模板.png)
+
+![编辑变量](IntelliJ-IDEA/自定义快捷键-编辑变量.png)
+
+使用方法：内容里面直接输入`date`即可
+
+![使用方法](IntelliJ-IDEA/自定义快捷键-使用方式.png)
 
 ## 推荐插件
 
