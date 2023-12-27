@@ -39,6 +39,12 @@ GOPATH: E:\data\go
 
 ![IDEA设置make路径](GoLang/IDEA-setting.png)
 
+```
+GOPROXY=https://goproxy.io,direct
+```
+
+![GoLand设置全局代理](GoLang/GOLAND-goproxy.png)
+
 ## 安装依赖包
 
 ``` bash
