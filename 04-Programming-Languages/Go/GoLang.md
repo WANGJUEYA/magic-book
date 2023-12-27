@@ -50,3 +50,11 @@ GOPROXY=https://goproxy.io,direct
 ``` bash
 $ go mod tidy
 ```
+
+## 项目启动
+
+```
+go run ./cmd/lumenim commet
+```
+
+![GoLand带参数启动调试项目](GoLang/GOLAND-带参数启动.png)
