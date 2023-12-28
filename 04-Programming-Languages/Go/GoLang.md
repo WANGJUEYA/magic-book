@@ -58,3 +58,24 @@ go run ./cmd/lumenim commet
 ```
 
 ![GoLand带参数启动调试项目](GoLang/GOLAND-带参数启动.png)
+
+
+## 项目调试
+
++ 低版本的 GoLand + 高版本的 GoLang 不匹配，需要重新下载调试器
+
+```shell
+go install github.com/go-delve/delve/cmd/dlv
+```
+
++ 或者下载源码进行安装
+
+```shell
+git clone git@github.com:go-delve/delve.git
+cd ./delve/cmd/dlv
+go build # 生成 dlv.exe 文件
+# 将生成的 dlv.exe 替换 GoLand 旧版本的编译工具
+# E:\JetBrains\GoLand 2021.2.1\plugins\go\lib\dlv\windows
+```
+
++ 上述生成的`dlv.exe`也可以用于`vscode`调试
