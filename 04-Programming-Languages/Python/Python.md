@@ -285,16 +285,3 @@ print(res.text)
 
 File > Settings > Project: {project-name} > Python Interpreter
 
-
-### torch安装
-
-+ 下载地址 [https://download.pytorch.org/whl/torch_stable.html](https://download.pytorch.org/whl/torch_stable.html)
-+ 根据自己python版本下载对应的安装包，笔者安装版本为`cpu/torch-2.1.2%2Bcpu-cp311-cp311-win_amd64.whl`
-
-```shell
-#  torch-2.1.2+cpu-cp311-cp311-win_amd64.whl is not a supported wheel on this platform
-# 笔者环境为最新版 python 3.12, 和安装包环境不匹配，故更改安装包名称后重新安装
-pip install "torch-2.1.2+cpu-cp311-cp311-win_amd64.whl"
-# 更改名称后各种环境不匹配，决定对python降级
-conda install python==3.6 torch
-```

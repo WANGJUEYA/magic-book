@@ -3,7 +3,11 @@ title: DQN
 keywords: DQN
 summary: DQN instruction
 tags:
-  - instruction
+  - DQN
+categories:
+  - 05-Program-Design
+  - Algorithm
+  - DQN
 date: 2023-12-28 16:44:50
 ---
 
