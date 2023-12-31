@@ -27,6 +27,14 @@ fileCode: true
 
 ## 附录
 
+### 参考资料
+
++ [《Playing Atari with Deep Reinforcement Learning》](https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf)
++ [《Human-level Control through Deep Reinforcement Learning：Nature杂志》](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
++ [DQN(Deep Q-learning)算法原理与实现](https://zhuanlan.zhihu.com/p/97856004)
++ [《深度强化学习实战》](https://www.manning.com/books/deep-reinforcement-learning-in-action)
++ [DQN基本概念和算法流程](https://zhuanlan.zhihu.com/p/630554489)
+
 ### [CartPole](CartPole.py)
 
 ```shell
