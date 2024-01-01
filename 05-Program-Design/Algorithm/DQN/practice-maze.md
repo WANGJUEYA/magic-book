@@ -16,16 +16,22 @@ fileCode: true
 
 + windows + CUDA=11.6
 + miniconda3
-+ python=[3.7.3](https://www.python.org/downloads/) 
-  - conda create -n dqn python=3.7.3
-+ pytorch=[1.7.1](https://pytorch.org/get-started/previous-versions/) 
++ python=[3.7.12](https://www.python.org/downloads/ 
+  - conda create -n dqn python=3.7.12
++ pytorch=[1.7.1](https://pytorch.org/get-started/previous-versions/)  # numpy==1.21.6
   - conda install pytorch==1.7.1 cudatoolkit=11.0 -c pytorch
   - pip install "torch-1.7.1+cpu-cp37-cp37m-win_amd64.whl" # https://download.pytorch.org/whl/torch/
-+ pip install gym[classic_control] # gym=0.26.2
-+ pip install pygame==2.1.0 tensorboard tensorboardX
++ conda install gym[classic_control] # gym=0.21.0
++ conda install pygame==2.1.0 tensorboard=2.11.2 tensorboardX==2.5.1 pyglet==1.5.27
 
 
 ## 附录
+
+### 项目地址
+
+```shell
+git clone git@github.com:WANGJUEYA/DQN.git
+```
 
 ### 参考资料
 

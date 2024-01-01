@@ -143,6 +143,7 @@ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/
 + conda是为了解决不同python项目依赖差异的问题, 可以创建多个环境处理这个问题
 
 ```shell
+conda update -n base -c defaults conda # 版本升级
 conda env list # 查看所有已经传教的环境
 conda create --name <envname> # 创建一个新的conda环境
 conda create -n chatglm --clone base # 创建一个克隆环境
@@ -170,6 +171,7 @@ conda list <package> # 查看指定包版本信息
 conda info --envs # 查看环境中的安装包版本
 conda clean --all # 清理不再使用的包
 conda env export > environment.yml # 导出环境配置
+conda list -e > requirements.txt # 导出当前环境版本
 conda env create --file environment.yml # 导入环境配置
 ```
 
