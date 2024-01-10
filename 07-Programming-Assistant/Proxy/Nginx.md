@@ -157,3 +157,14 @@ server {
     }
 }
 ```
+
+### 给同一端口配置多个上下文【应当有更优雅的方式】
+
+```nginx.conf
+server {
+    location /vs {
+		alias   D:/workspace/web-project/dist;
+		try_files $uri $uri/ /vs/index.html;
+	}
+}
+```
