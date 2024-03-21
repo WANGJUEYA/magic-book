@@ -43,3 +43,20 @@ use databasename; # 进入某个数据库
 exit; # 退出mysql命令行
 quit; # 退出mysql命令行
 ```
+
+### mysql关联查询时字符集不匹配
+
++ 如果使用数据库复制迁移且建表语句未设置统一字符集，可能会导致关联查询时出现字符集不匹配异常
+
+```sql
+-- 查询建表语句
+SHOW CREATE TABLE {TABLE_NAME};
+-- 查询所有字段字符集
+SHOW FULL COLUMNS FROM {TABLE_NAME};
+-- 查看服务器设置
+SHOW VARIABLES LIKE 'character_set_server';
+-- 改变表或字段的字符集
+ALTER TABLE {TABLE_NAME} CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+-- 改变某个具体字段的字符集
+ALTER TABLE {TABLE_NAME} MODIFY {FIELD_NAME} {FIELD_TYPE} CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+```
