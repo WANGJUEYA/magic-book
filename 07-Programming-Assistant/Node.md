@@ -95,3 +95,7 @@ build配置
   --report-json 生成report.json来帮助分析包内容
   --watch       监听 - 当有改变时 自动重新打包~
 ```
+
+## node-sass 冲突问题
+
+[node-sass 版本对应关系](https://www.npmjs.com/package/node-sass)
