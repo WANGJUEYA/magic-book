@@ -40,8 +40,17 @@ set password for 'root'@'localhost' = password('xxxxxxxx') # 进入后修改密�
 mysql -u root -p # 再次进入数据库
 create database txsql; # 创建数据库
 use databasename; # 进入某个数据库
+show tables; # use db; 显示指定数据库得所有表名
 exit; # 退出mysql命令行
 quit; # 退出mysql命令行
+select * from information_schema.tables where table_schema = 'databasename';
+
+SHOW DATABASES; # 显示所有数据库
+use databasename; # 进入某个数据库
+show tables; # 显示数据库下所有表名
+quit; # 退出数据库, 执行导出程序
+mysqldump -u root -p mydatabase > /tmp/mydatabase.sql; # 导出数据库
+mysqldump -u root -p --databases mydatabase1 mydatabase2 > /tmp/mydatabase.sql; # 导出多个数据库
 ```
 
 ### mysql关联查询时字符集不匹配
