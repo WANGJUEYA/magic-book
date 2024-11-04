@@ -51,6 +51,7 @@ show tables; # 显示数据库下所有表名
 quit; # 退出数据库, 执行导出程序
 mysqldump -u root -p mydatabase > /tmp/mydatabase.sql; # 导出数据库
 mysqldump -u root -p --databases mydatabase1 mydatabase2 > /tmp/mydatabase.sql; # 导出多个数据库
+mysql -uroot -p"yourpassword" mydatabase < /tmp/mydatabase.sql
 ```
 
 ### mysql关联查询时字符集不匹配
