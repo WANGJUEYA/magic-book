@@ -168,3 +168,48 @@ server {
 	}
 }
 ```
+
+### 开启https
+
+```nginx.conf
+    # https://www.cnblogs.com/aerfazhe/p/15773667.html
+    server {
+        listen       9090 ssl;
+        server_name  wechat;
+
+        ssl_certificate     /usr/local/nginx/tanpeifang/tanpeifang.pem;
+        ssl_certificate_key  /usr/local/nginx/tanpeifang/tanpeifang.key;
+
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+
+		#后台服务配置		
+	    location ^~ /api {
+			proxy_pass              http://127.0.0.1:8080/zh-mental/;
+
+           		# 请求服务器升级协议为 WebSocket
+            		proxy_http_version 1.1;
+            		proxy_set_header Upgrade $http_upgrade;
+            		proxy_set_header Connection $connection_upgrade;
+
+			proxy_set_header        Host 127.0.0.1;
+			proxy_set_header        X-Real-IP $remote_addr;
+			proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+            # 设置读写超时时间，默认 60s 无数据连接将会断开
+            proxy_read_timeout 600s;
+            proxy_send_timeout 600s;
+		}
+
+       	location / {
+			root   html;
+			index  index.html index.htm;
+			if (!-e $request_filename) {
+				rewrite ^(.*)$ /index.html?s=$1 last;
+				break;
+			}
+		}
+    }
+```
