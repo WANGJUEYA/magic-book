@@ -1,3 +1,13 @@
+---
+title: nvm
+summary: nvm install
+tags:
+  - nvm node
+categories:
+  - 07-Programming-Assistant
+date: 2022-10-15 14:51:23
+---
+
 ## 常用命令
 
 ```shell
