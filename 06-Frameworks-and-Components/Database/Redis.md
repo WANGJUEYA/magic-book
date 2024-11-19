@@ -16,6 +16,30 @@ date: 2022-10-15 13:23:30
 + Set
 + Sorted Set
 
+## 安装部署
+
+```shell
+## 更新系统
+sudo apt update && sudo apt upgrade -y
+## Ubuntu 上安装 Redis
+sudo apt install redis-server
+## 查看redis版本
+redis-cli --version
+## 查看redis运行状态
+systemctl status redis
+## 命令连接redis
+redis-cli -h 127.0.0.1 -p 6379 -a 123456
+## 设置redis密码(重启后需要重置密码)
+config set requirepass 123456
+## 卸载redis
+sudo apt-get purge --auto-remove redis-server
+```
+
++ [Ubuntu安装特定版本Redis](https://blog.51cto.com/u_16213452/12150139)
+```shell
+## Ubuntu 上安装特定版本的 Redis
+```
+
 ## JAVA实战 - Spring
 
 ### redis 单机与集群连接、功能测试注入

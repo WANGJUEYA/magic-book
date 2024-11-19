@@ -35,7 +35,7 @@ yum install -y openssl openssl-devel
 ### 2. 下载
 + 直接下载 .tar.gz 安装包，地址：https://nginx.org/en/download.html
 ~~~shell
-wget -c https://nginx.org/download/nginx-1.24.0.tar.gz
+wget -c https://nginx.org/download/nginx-1.26.2.tar.gz
 ~~~
 
 ### 3. 安装
@@ -43,13 +43,22 @@ wget -c https://nginx.org/download/nginx-1.24.0.tar.gz
 + [同一主机安装多个nginx](https://blog.csdn.net/u011066470/article/details/118321392)
 
 ~~~shell
-tar -zxvf nginx-1.22.1.tar.gz
-cd nginx-1.22.1
+# Ubuntu安装nginx https://blog.csdn.net/m0_52985087/article/details/132063280
+sudo apt-get install gcc
+sudo apt-get install libpcre3 libpcre3-dev
+sudo apt-get install zlib1g zlib1g-dev
+sudo apt-get install openssl
+sudo apt-get install libssl-dev
+
+tar -zxvf nginx-1.26.2.tar.gz
+cd nginx-1.26.2
 # 使用默认配置
-./configure
+# ./configure
 # 指定安装路径(安装多个nginx需要配置不同安装路径)
-./configure --prefix=/home/work/nginx-work
-# 编译安装
+# ./configure --prefix=/usr/local/nginx
+# 指定安装路径并开启ssh  # --原来有的模块（如果有的话）
+./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module
+# 编译安装[nginx.conf](..%2F..%2F..%2F..%2F..%2F..%2F%5B0002%5D%C0%A9%D5%B9%CF%EE%C4%BF%2F%5B2024%5D-002%20%D0%F1%D2%AB%D6%C7%BB%DB%C4%DC%D4%B4%B9%DC%C0%ED%C6%BD%CC%A8%2F%CA%B5%CA%A9%D4%CB%CE%AC%2Fnginx.conf)
 make && make install
 # 查找安装路径
 whereis nginx

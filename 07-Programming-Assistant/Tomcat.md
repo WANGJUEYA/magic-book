@@ -8,6 +8,24 @@ categories:
 date: 2022-10-15 14:51:23
 ---
 
+## 安装部署
+
+[安装教程](https://blog.csdn.net/m0_52313753/article/details/122902768)
+
+```shell
+## 更新系统
+sudo apt update && sudo apt upgrade -y
+# 安装jdk
+apt search jdk
+sudo apt install openjdk-8-jdk
+java -version # /usr/lib/jvm/java-8-openjdk-amd64
+## 下载tomcat安装包
+wget https://mirrors.huaweicloud.com/apache/tomcat/tomcat-9/v9.0.97/bin/apache-tomcat-9.0.97.tar.gz
+tar -zxf apache-tomcat-9.0.97.tar.gz
+./apache-tomcat-9.0.97/bin/startup.sh
+./apache-tomcat-9.0.97/bin/shutdown.sh
+```
+
 ### 停止及重启应用
 
 ```shell
