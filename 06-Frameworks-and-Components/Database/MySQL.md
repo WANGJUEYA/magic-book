@@ -54,6 +54,28 @@ mysqldump -u root -p --databases mydatabase1 mydatabase2 > /tmp/mydatabase.sql; 
 mysql -uroot -p"yourpassword" mydatabase < /tmp/mydatabase.sql > /tmp/mydatabase.log 2>&1 & # 导入数据, 写入到日志文件, 后台执行
 ```
 
+### Ubuntu安装MySQL客户端
+
+```shell
+mysql -u root # 第一次进入数据库
+sudo apt update
+sudo apt install mysql-client 
+# yum search mysql # centos
+# yum install mysql-community-client
+mysql --version
+mysql -h hostname -u username -p
+# mysql -h 49.233.54.61 -u test -p energydb
+# 同一个用户授权多个ip
+create user 'test'@'localhost' identified by '1qaz@WSX';
+GRANT ALL PRIVILEGES ON energydb.* TO 'test'@'localhost';
+create user 'test'@'62.234.8.147' identified by '1qaz@WSX';
+GRANT ALL PRIVILEGES ON *.* TO 'test'@'62.234.8.147';
+create user 'test'@'49.233.54.61' identified by '1qaz@WSX';
+GRANT ALL PRIVILEGES ON *.* TO 'test'@'49.233.54.61';
+# 刷新权限立即生效
+FLUSH PRIVILEGES;
+```
+
 ### mysql关联查询时字符集不匹配
 
 + 如果使用数据库复制迁移且建表语句未设置统一字符集，可能会导致关联查询时出现字符集不匹配异常
