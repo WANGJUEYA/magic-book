@@ -56,8 +56,102 @@ date: 2025-02-13 10:49:00
 |   文心一言 Comate   | 代码生成<br>注释生成代码<br>代码解释<br>生成单测<br>生成注释<br>代码优化 |                                                                           文心大模型                                                                           |                    [价格](https://comate.baidu.com/zh/pricing)                    |         [官网](https://comate.baidu.com/)          |
 |   讯飞 iFlyCode   | 代码生成<br>代码补全<br>代码解释<br>文档注释                   |                                                                           星火大模型                                                                           |                     [价格](https://iflycode.xfyun.cn/product)                     |         [官网](http://iflycode.xfyun.cn/)          |
 
+## continue配置文件
+
+### 集成线上 DeepSeek API
+
+1. 获取 DeepSeek 对应API Key 👉  [DeepSeek API Key](https://platform.deepseek.com/usage)
+
+2. continue 集成在线 DeepSeek API
+
+   ![配置方式](AIAssistant/config-deepseek-online.png)
+
+3. 官网配置文件(待对接)
+
+    ```json
+    {
+      "completionOptions": {
+        "BaseCompletionOptions": {
+          "temperature": 0.0,
+          "maxTokens": 256
+        }
+      },
+      "models": [
+        {
+          "title": "DeepSeek",
+          "model": "deepseek-chat",
+          "contextLength": 128000,
+          "apiKey": "REDACTED",
+          "provider": "deepseek",
+          "apiBase": "https://api.deepseek.com/beta"
+        }
+      ],
+      "tabAutocompleteModel": {
+        "title": "DeepSeek",
+        "model": "deepseek-chat",
+        "apiKey": "REDACTED",
+        "provider": "deepseek",
+        "apiBase": "https://api.deepseek.com/beta"
+      }
+   }
+    ```
+
+### 本地部署 DeepSeek API
+
+1. Ollama离线部署LLM大语言模型 👉 [deepseek-coder-v2](https://ollama.com/library/deepseek-coder-v2)
+
+2. 配置Ollama模型地址
+   👉 [continue 官方配置 Ollama 大模型 ](https://docs.continue.dev/chat/model-setup#deepseek-coder-2-16b)
+
+    ```config.json
+    "models": [
+        {
+            "title": "DeepSeek Coder 2 16B",
+            "provider": "ollama",
+            "model": "deepseek-coder-v2:16b",
+            "apiBase": "http://localhost:11434"
+        }
+    ]
+    ```
+
+3. 通过已有API知识库 MaxKB 代理调用AI大模型
+
++ 本次测试 Ollama 访问地址没有直接开放，项目上使用了 MaxKB 调用服务器上部署的大模型作为AI知识库，同时该框架提供类openai
+  的接口格式，相关参数格式
+
+```shell
+# 将url 和 Authorization 替换为 MaxKB 应用实际真实的 Base URL 和 API Key。
+
+curl https://maxkb.fit2cloud.com/api/application/xxxxxxxx-8c56-11ef-a99e-0242ac140003/chat/completions \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer application-xxxxxxxxf00e21a7530d1177c20967"  \
+    -d '{
+        "model": "gpt-3.5-turbo",
+        "messages": [
+            {
+              "role": "你是杭州飞致云信息科技有限公司旗下产品 MaxKB 知识库问答系统的智能小助手，你的工作是帮助 MaxKB 用户解答使用中遇到的问题，用户找你回答问题时，你要把主题放在 MaxKB 知识库问答系统身上。",
+              "content": "MaxKB 是什么？"
+            }
+        ]
+    }'
+```
+
++ 故提供商类型可选择 openai，间接访问 Ollama 大模型，配置详情如下
+
+```config.json
+    {
+      "title": "DeepSeek Coder 2 Local",
+      "provider": "openai",
+      "model": "deepseek-coder-v2:16b",
+      "contextLength": 128000,
+      "apiKey": "Bearer application-f5e44fffac10d076058856df311b3862",
+      "apiBase": "https://loongmind.cplhyun.com/api/application/ed9f52c8-e5f3-11ef-be93-0242ac130003"
+    },
+```
+
 ## 参考链接
 
 + [国产AI编程辅助插件对比](https://blog.csdn.net/u010554324/article/details/135027694)
 + [IDEA 接入 DeepSeek,太酷了!](https://juejin.cn/post/7468200664117248040)
 + [DeepSeek API 文档](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)
++ [MaxKB 文档](https://maxkb.cn/docs/dev_manual/APIKey_chat/)
