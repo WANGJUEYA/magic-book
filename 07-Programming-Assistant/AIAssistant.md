@@ -110,6 +110,13 @@ date: 2025-02-13 10:49:00
             "provider": "ollama",
             "model": "deepseek-coder-v2:16b",
             "apiBase": "http://localhost:11434"
+        },
+        {
+            "title": "DeepSeek Coder ollama 6.7b",
+            "provider": "ollama",
+            "model": "deepseek-coder:6.7b",
+            "apiKey": "351c69317ad1a71925c9974",
+            "apiBase": "https://coder-loongmind.cplhyun.com"
         }
     ]
     ```
