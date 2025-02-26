@@ -123,38 +123,52 @@ date: 2025-02-13 10:49:00
 
 3. 通过已有API知识库 MaxKB 代理调用AI大模型
 
-+ 本次测试 Ollama 访问地址没有直接开放，项目上使用了 MaxKB 调用服务器上部署的大模型作为AI知识库，同时该框架提供类openai
-  的接口格式，相关参数格式
+   + 本次测试 Ollama 访问地址没有直接开放，项目上使用了 MaxKB 调用服务器上部署的大模型作为AI知识库，同时该框架提供类openai
+     的接口格式，相关参数格式
 
-```shell
-# 将url 和 Authorization 替换为 MaxKB 应用实际真实的 Base URL 和 API Key。
+    ```shell
+    # 将url 和 Authorization 替换为 MaxKB 应用实际真实的 Base URL 和 API Key。
+    
+    curl https://maxkb.fit2cloud.com/api/application/xxxxxxxx-8c56-11ef-a99e-0242ac140003/chat/completions \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer application-xxxxxxxxf00e21a7530d1177c20967"  \
+        -d '{
+            "model": "gpt-3.5-turbo",
+            "messages": [
+                {
+                  "role": "你是杭州飞致云信息科技有限公司旗下产品 MaxKB 知识库问答系统的智能小助手，你的工作是帮助 MaxKB 用户解答使用中遇到的问题，用户找你回答问题时，你要把主题放在 MaxKB 知识库问答系统身上。",
+                  "content": "MaxKB 是什么？"
+                }
+            ]
+        }'
+    ```
 
-curl https://maxkb.fit2cloud.com/api/application/xxxxxxxx-8c56-11ef-a99e-0242ac140003/chat/completions \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer application-xxxxxxxxf00e21a7530d1177c20967"  \
-    -d '{
-        "model": "gpt-3.5-turbo",
-        "messages": [
-            {
-              "role": "你是杭州飞致云信息科技有限公司旗下产品 MaxKB 知识库问答系统的智能小助手，你的工作是帮助 MaxKB 用户解答使用中遇到的问题，用户找你回答问题时，你要把主题放在 MaxKB 知识库问答系统身上。",
-              "content": "MaxKB 是什么？"
-            }
-        ]
-    }'
-```
+   + 故提供商类型可选择 openai，间接访问 Ollama 大模型，配置详情如下
 
-+ 故提供商类型可选择 openai，间接访问 Ollama 大模型，配置详情如下
+    ```config.json
+        {
+          "title": "DeepSeek Coder 2 Local",
+          "provider": "openai",
+          "model": "deepseek-coder-v2:16b",
+          "contextLength": 128000,
+          "apiKey": "Bearer application-f5e44fffac10d076058856df311b3862",
+          "apiBase": "https://loongmind.cplhyun.com/api/application/ed9f52c8-e5f3-11ef-be93-0242ac130003"
+        },
+    ```
 
-```config.json
+4. [阿里云百炼兼容OpenAI](https://help.aliyun.com/zh/model-studio/developer-reference/compatibility-of-openai-with-dashscope)
+
+    + 部分模型代码接入时报错404，生效模型为`qwen2.5-coder-7b-instruct`
+    ```json
     {
-      "title": "DeepSeek Coder 2 Local",
+      "title": "qwen-coder-plus",
       "provider": "openai",
-      "model": "deepseek-coder-v2:16b",
+      "model": "qwen-coder-plus",
       "contextLength": 128000,
-      "apiKey": "Bearer application-f5e44fffac10d076058856df311b3862",
-      "apiBase": "https://loongmind.cplhyun.com/api/application/ed9f52c8-e5f3-11ef-be93-0242ac130003"
-    },
-```
+      "apiKey": "sk-f2d9791a17f14710b70dc277e72e206e",
+      "apiBase": "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    }
+    ```
 
 ## 参考链接
 

@@ -69,8 +69,14 @@ Kafka将消息种子(Feed)分门别类，每一类的消息称之为一个主题
 
 ## 应用部署
 
-+ 部署 zookeeper + kafka
-+ 配置kafka SASL验证
+### 部署 kafka
+
+```shell
+wget https://dlcdn.apache.org/kafka/3.9.0/kafka-3.9.0-src.tgz
+tar -zxvf kafka-3.9.0-src.tgz
+```
+
+### 配置kafka SASL验证
 
 ## Spring集成kafka
 

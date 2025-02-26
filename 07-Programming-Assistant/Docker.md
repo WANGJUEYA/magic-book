@@ -63,6 +63,10 @@ yum remove docker docker-common container-selinux docker-selinux docker-engine
 yum update # 更新过程中有下载错误的依赖, 先按照提示忽略掉
 # 安装 yum-utils，它提供了 yum-config-manager，可用来管理yum源
 yum install -y yum-utils
+# yum安装软件报错 `Configuration: OptionBinding with id “failovermethod” does not exist`
+# vi CentOS-Epel.repo
+# 备份文件报错 `Removing leading `/' from member names`
+# tar zcPf /home/yum.repos.d.tar.gz /etc/yum.repos.d/
 # 查看已安装软件版本
 rpm -qa | grep yum-utils
 # 设置yum源
