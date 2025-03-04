@@ -74,7 +74,24 @@ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/d
 # 更新索引
 yum makecache fast
 # 安装 docker-ce
-yum install -y docker-ce # 安装
+yum install docker-ce docker-ce-cli containerd.io # 安装
+# 启动Docker服务并设置开机自启
+sudo systemctl start docker
+sudo systemctl enable docker
+# 验证安装
+docker run hello-world
+# 重启docker
+systemctl restart docker
+# 查看所有服务
+Docker stats -a # --no-stream 展示当前状态就直接退出了，不再实时更新
+# 查看所有镜像
+docker ps
+# 进入容器控制台
+docker exec -it <容器名称或ID> /bin/bash
+## 进入postgresql
+psql -U <数据库用户名> -d <数据库名>
+# 如果镜像使用默认配置（如官方镜像）：
+psql -U postgres -d postgres
 ```
 
 ### 异常问题处理

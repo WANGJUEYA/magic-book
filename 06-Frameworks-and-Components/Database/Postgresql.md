@@ -24,4 +24,13 @@ sudo systemctl enable postgresql-
 sudo systemctl start postgresql
 ## 查看安装是否成功
 sudo systemctl status postgresql
+## 进入postgresql
+psql -U <数据库用户名> -d <数据库名>
+# 如果镜像使用默认配置（如官方镜像）：
+psql -U postgres -d postgres
+psql -U postgres # 这条语句登录数据库，不需要输入数据库密码，注意U是大写的。
+## 查看所有数据库
+SELECT datname FROM pg_database;
+## 查询数据库中所有表
+SELECT table_name FROM information_schema.table where table_schema = 'maxkb';
 ```

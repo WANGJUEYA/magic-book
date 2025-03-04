@@ -32,6 +32,11 @@ HKEY_CURRENT_USER\Software\JavaSoft\Prefs\jetbrains\*
 2. 搜索 ide eval reset 安装
 3. help --eval reset (可以打开启动自动更新无限试用时间)
 
+### 其他方法: 2024.1.4
+
+https://www.quanxiaoha.com/idea-pojie/idea-pojie-20241.html
+https://www.cnblogs.com/gdutxiaoxu/p/17098362.html
+
 ## 常用配置
 
 ### Git在信息栏中显示本地修改
