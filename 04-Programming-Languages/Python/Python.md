@@ -91,6 +91,7 @@ pip --version
 conda config --set show_channel_urls yes # windows 生成 .condarc 文件配置
 conda clean -i # 配置完成后，清理索引缓存
 conda config --show channels # 展示所有镜像源
+conda clean --all  # 清理所有缓存
 ```
 
 + 用户目录下 .condarc 文件配置
@@ -110,6 +111,19 @@ custom_channels:
   menpo: http://mirrors.aliyun.com/anaconda/cloud
   pytorch: http://mirrors.aliyun.com/anaconda/cloud
   simpleitk: http://mirrors.aliyun.com/anaconda/cloud
+```
+
+```text
+envs_dirs:
+  - E:/data/miniconda3/envs
+channels:
+  - http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+  - http://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+  - http://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
+default_channels:
+  - http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+  - http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+show_channel_urls: true
 ```
 
 #### 设置默认下载的镜像地址

@@ -92,6 +92,28 @@ docker exec -it <容器名称或ID> /bin/bash
 psql -U <数据库用户名> -d <数据库名>
 # 如果镜像使用默认配置（如官方镜像）：
 psql -U postgres -d postgres
+# 网易：http://hub-mirror.c.163.com
+# 中科大镜像地址：http://mirrors.ustc.edu.cn/
+# 中科大github地址：https://github.com/ustclug/mirrorrequest
+# Azure中国镜像地址：http://mirror.azure.cn/
+# Azure中国github地址：https://github.com/Azure/container-service-for-azure-china
+# DockerHub镜像仓库: https://hub.docker.com/ 
+# 阿里云镜像仓库： https://cr.console.aliyun.com 
+# google镜像仓库： https://console.cloud.google.com/gcr/images/google-containers/GLOBAL （如果你本地可以翻墙的话是可以连上去的 ）
+# coreos镜像仓库： https://quay.io/repository/ 
+# RedHat镜像仓库： https://access.redhat.com/containers
+# 创建或修改Docker配置文件
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["http://mirrors.ustc.edu.cn/"]
+}
+EOF
+
+# 重启 docker 服务
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+# 查看镜像源
+docker info | grep "Registry Mirrors"
 ```
 
 ### 异常问题处理
