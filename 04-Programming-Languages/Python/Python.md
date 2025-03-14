@@ -242,7 +242,7 @@ pip install uv --user
 uv --version
 
 # uv查看默认缓存路径
-uv pip cache dir
+uv cache dir
 # 更改默认缓存路径：永久更改在系统环境变量中进行
 # 临时设置（仅当前终端会话生效）
 export UV_CACHE_DIR=/path/to/custom_cache
@@ -250,7 +250,7 @@ export UV_CACHE_DIR=/path/to/custom_cache
 $env:UV_CACHE_DIR = "E:\data\uv\cache"
 ```
 
-+ 基本使用
++ 基本使用 https://hellowac.github.io/uv-zh-cn/getting-started/installation/
 
 ```shell
 # 创建虚拟环境
@@ -259,6 +259,14 @@ uv venv myenv  # 创建名为 myenv 的虚拟环境
 source myenv/bin/activate
 # 激活虚拟环境 windows
 .\myenv\Scripts\activate
+
+# 查看可用的python环境
+uv python list
+# 指定python环境创建虚拟环境
+uv venv --python 3.11.6 # https://zhuanlan.zhihu.com/p/689976933
+## 设置当前实用的python环境
+uv python pin 3.13
+
 # 安装依赖包
 uv pip install numpy pandas  # 单包或多包安装
 uv pip install -r requirements.txt  # 从文件安装
@@ -276,6 +284,23 @@ uv pip freeze    # 导出依赖列表
 uv pip install --resolution=fast  # 快速解析模式（忽略次要版本冲突）
 # 配置镜像源(国内加速)
 uv pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+# windows更改环境变量
+UV_DEFAULT_INDEX=https://pypi.tuna.tsinghua.edu.cn/simple
+
+## 处理 toml 管理的项目
+# 安装项目依赖（普通模式）
+uv pip install .
+# 或者以可编辑模式安装（开发时推荐）
+uv pip install -e .
+# 如果项目中定义了开发依赖[tool.poetry.dev-dependencies] 可使用 -d 参数安装
+uv pip install -e . -E dev # -d 命令是 pip 执行的命令
+
+# 启动项目
+python main.py
+# 如果项目定义了命令行工具，可以使用提示的命令行工具启动
+# pyproject.toml 示例
+[tool.poetry.scripts]
+mycli = "mypackage:main"
 ```
 
 ## 字符串转json
