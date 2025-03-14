@@ -21,6 +21,12 @@ date: 2025-02-25 13:47:35
 数据准备阶段：数据提取——>文本分割——>向量化（embedding）——>数据入库
 应用阶段：用户提问——>数据检索（召回）——>注入Prompt——>LLM生成答案
 
+## 技术框架
+
++ [langchain](https://python.langchain.com/docs/introduction/)
+
++ [langchain中文网](https://docs.langchain.com.cn/docs/introduction/)
+
 ## RAG架构选型
 
 # https://zhuanlan.zhihu.com/p/16138803604

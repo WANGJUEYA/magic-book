@@ -155,6 +155,13 @@ date: 2022-10-15 15:38:43
 
 ## 常用命令
 
+### 服务器安装
+
+```shell
+yum -y install git-core
+git --version
+```
+
 ### 绑定git地址
 
 ```shell

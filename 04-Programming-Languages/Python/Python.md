@@ -175,6 +175,7 @@ conda list # 验证所有依赖项是否已经安装正确
 
 ```shell
 conda update conda # 更新最新版本 conda
+conda install python=3.13 # https://www.python.org/getit/
 conda install <package> # 安装包
 conda install <package>=<version> # 安装指定版本包
 conda update <package> # 更新包
@@ -187,6 +188,94 @@ conda clean --all # 清理不再使用的包
 conda env export > environment.yml # 导出环境配置
 conda list -e > requirements.txt # 导出当前环境版本
 conda env create --file environment.yml # 导入环境配置
+```
+
+### uv
+
++ uv 凭借其极速和现代化设计，正在成为 Python 开发者的新宠
+
+```shell
+## 安装uv (windows如何安装?)
+# 使用 curl
+curl -LsSf https://astral.sh/uv/install.sh | sh
+# 或使用 wget
+wget -qO- https://astral.sh/uv/install.sh | sh
+# 安装完成后，按提示符将uv添加到环境变量
+source ~/.bashrc  # 或 source ~/.zshrc（使用 Zsh 时）
+# 验证安装
+uv --version
+```
+
++ windows安装uv
+
+```shell
+# 方案一：通过PowerShell一键安装
+# 使用官方安装脚本（需科学上网或网络畅通）
+irm https://astral.sh/uv/install.ps1 | iex
+# 将 uv 添加到当前会话的环境变量
+$env:Path += ";$env:USERPROFILE\.cargo\bin"
+# 安装完成后，将uv添加到系统环境变量，永久生效（可选）
+[System.Environment]::SetEnvironmentVariable("Path", [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User) + ";$env:USERPROFILE\.cargo\bin", [System.EnvironmentVariableTarget]::User)
+
+# 方案二：通过pipx安装（废弃：高版本可以一键安装）
+python -m pip install --user pipx
+# 卸载 pipx
+python -m pip uninstall pipx
+python -m pipx ensurepath
+# 查看系统缓存路径
+pipx environment
+# pipx更改缓存路径；更改系统缓存变量
+PIPX_HOME = E:\python\pipx
+PIPX_BIN_DIR = %PIPX_HOME%\bin
+PIPX_MAN_DIR = %PIPX_HOME%\share\man
+PIPX_CACHE_DIR = %PIPX_HOME%\.cache
+# 安装uv
+pipx install uv
+
+# 方案三： pip 安装；不建议：环境较复杂
+pip install uv --user
+
+# 方案四：二进制安装或cargo编辑安装
+
+# uv官网： https://docs.astral.sh/uv/getting-started/installation/#cargo
+# 验证安装 
+uv --version
+
+# uv查看默认缓存路径
+uv pip cache dir
+# 更改默认缓存路径：永久更改在系统环境变量中进行
+# 临时设置（仅当前终端会话生效）
+export UV_CACHE_DIR=/path/to/custom_cache
+# Windows（PowerShell）: 临时设置
+$env:UV_CACHE_DIR = "E:\data\uv\cache"
+```
+
++ 基本使用
+
+```shell
+# 创建虚拟环境
+uv venv myenv  # 创建名为 myenv 的虚拟环境
+# 激活虚拟环境
+source myenv/bin/activate
+# 激活虚拟环境 windows
+.\myenv\Scripts\activate
+# 安装依赖包
+uv pip install numpy pandas  # 单包或多包安装
+uv pip install -r requirements.txt  # 从文件安装
+# 生成锁定文件
+uv pip compile requirements.in -o requirements.txt  # 生成精确依赖版本
+# 运行python脚本
+uv run main.py  # 自动解析依赖并运行（实验性功能）
+# 退出虚拟环境
+deactivate
+# 替代pip命令
+uv pip list       # 查看已安装包
+uv pip uninstall <package>  # 卸载包
+uv pip freeze    # 导出依赖列表
+# 依赖解析加速
+uv pip install --resolution=fast  # 快速解析模式（忽略次要版本冲突）
+# 配置镜像源(国内加速)
+uv pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 ## 字符串转json
