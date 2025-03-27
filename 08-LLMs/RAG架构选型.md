@@ -29,27 +29,30 @@ date: 2025-02-25 13:47:35
 
 ## RAG架构选型
 
-# https://zhuanlan.zhihu.com/p/16138803604
++ https://zhuanlan.zhihu.com/p/16138803604
 
-|            模型名称             |                   项目仓库                    |
-|:---------------------------:|:-----------------------------------------:|
-|          Haystack           |      github.com:deepset-ai/haystack       |
-|            MaxKB            |        github.com:1Panel-dev/MaxKB        |
-|           RAGFlow           |       github.com:infiniflow/ragflow       |
-|            Txtai            |          github.com:neuml/txtai           |
-|            STORM            |      github.com:stanford-oval/storm       |
-|           LLM-App           |       github.com:pathwaycom/llm-app       |
-|           Cognita           |      github.com:truefoundry/cognita       |
-| R2R（Retrieval-to-Retrieval） |     git@github.com:SciPhi-AI/R2R.git      |
-|           Neurite           |   github.com:satellitecomponent/Neurite   |
-|          FlashRAG           |       github.com:RUC-NLPIR/FlashRAG       |
-|           Canopy            |       github.com:pinecone-io/canopy       |
-|    langchain4j-aideepin     | github.com:moyangzhanlangchain4j-aideepin |
-|        jai-workflow         |    github.com:czelabueno/jai-workflow     |
-|          OpenManus          |     github.com:mannaandpoem/OpenManus     |
+|            模型名称             |                                          项目仓库                                           |
+|:---------------------------:|:---------------------------------------------------------------------------------------:|
+|          Haystack           |                             github.com:deepset-ai/haystack                              |
+|            MaxKB            |                               github.com:1Panel-dev/MaxKB                               |
+|           RAGFlow           |                              github.com:infiniflow/ragflow                              |
+|            Txtai            |                                 github.com:neuml/txtai                                  |
+|            STORM            |                             github.com:stanford-oval/storm                              |
+|           LLM-App           |                              github.com:pathwaycom/llm-app                              |
+|           Cognita           |                             github.com:truefoundry/cognita                              |
+| R2R（Retrieval-to-Retrieval） |                            git@github.com:SciPhi-AI/R2R.git                             |
+|           Neurite           |                          github.com:satellitecomponent/Neurite                          |
+|          FlashRAG           |                              github.com:RUC-NLPIR/FlashRAG                              |
+|           Canopy            |                              github.com:pinecone-io/canopy                              |
+|    langchain4j-aideepin     |                        github.com:moyangzhanlangchain4j-aideepin                        |
+|        jai-workflow         |                           github.com:czelabueno/jai-workflow                            |
+|          OpenManus          |                            github.com:mannaandpoem/OpenManus                            |
+|            Dify             | https://docs.dify.ai/zh-hans/guides/knowledge-base/external-knowledge-api-documentation |
 
 ## 参考链接
 
 + [RAG框架总结主流框架](https://juejin.cn/post/7442301465249382419)
 + [浏览器助手](https://github.com/browser-use/browser-use)
 + [多智能体架构](https://mp.weixin.qq.com/s/F0JF-P2b8hT8Pjyer08gpg)
+
++ [KTransformers: 大语言模型推理优化框架](https://ai-bot.cn/ktransformers/)
