@@ -115,3 +115,22 @@ docker cp pgvector:/var/lib/postgresql/data/pg_hba.conf pg_hba.conf
 # 退出容器后重新加载配置
 docker exec -u postgres pgvector pg_ctl reload -D /var/lib/postgresql/data
 ```
+
+### 创建用户及授权
+
+```sql
+-- 创建用户并设置密码
+CREATE USER maxkb WITH PASSWORD 'maxkb';
+-- 创建数据库并指定所有者
+CREATE DATABASE maxkb OWNER maxkb;
+-- 授予用户数据库权限
+GRANT ALL PRIVILEGES ON DATABASE maxkb TO maxkb;
+-- 查看所有数据库
+\l
+-- 连接到目标数据库并授予public模式权限
+\c maxkb
+GRANT USAGE, CREATE ON SCHEMA public TO maxkb;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO maxkb;
+-- 启用向量扩展
+CREATE EXTENSION vector;
+```
