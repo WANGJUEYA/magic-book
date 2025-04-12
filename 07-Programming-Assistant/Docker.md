@@ -30,7 +30,9 @@ docker ps -a
 
 ```shell
 docker start $contaniner-id
-docker stop $contaniner-id
+docker stop $contaniner-id # 通过容器ID停止
+docker stop $contaniner-name   # 通过名称停止
+docker start $contaniner-id # 重启容器
 ```
 
 ### 其他常用命令
@@ -84,10 +86,18 @@ docker run hello-world
 systemctl restart docker
 # 查看所有服务
 Docker stats -a # --no-stream 展示当前状态就直接退出了，不再实时更新
-# 查看所有镜像
+# 查看所有容器
 docker ps
+# 查看所有容器 包括已停止的
+docker ps -a
+# 删除容器
+docker rm f66
+# 查看所有镜像
+docker images
 # 进入容器控制台
 docker exec -it <容器名称或ID> /bin/bash
+# 退出容器控制台
+exit
 ## 进入postgresql
 psql -U <数据库用户名> -d <数据库名>
 # 如果镜像使用默认配置（如官方镜像）：
