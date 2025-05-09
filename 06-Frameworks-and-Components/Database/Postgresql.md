@@ -10,6 +10,8 @@ categories:
 date: 2023-07-16 20:24:00
 ---
 
+https://www.runoob.com/manual/PostgreSQL/
+
 ## yum源安装
 
 ```shell
@@ -133,4 +135,6 @@ GRANT USAGE, CREATE ON SCHEMA public TO maxkb;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO maxkb;
 -- 启用向量扩展
 CREATE EXTENSION vector;
+-- 创建模式，不建议直接使用public库
+create schema my_schema authorization maxkb;
 ```
