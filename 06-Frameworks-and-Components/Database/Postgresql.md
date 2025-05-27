@@ -136,5 +136,8 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO maxkb;
 -- 启用向量扩展
 CREATE EXTENSION vector;
 -- 创建模式，不建议直接使用public库
-create schema my_schema authorization maxkb;
+create schema maxkb authorization maxkb;
+-- 切换模式
+set search_path to maxkb;
+show search_path;
 ```
