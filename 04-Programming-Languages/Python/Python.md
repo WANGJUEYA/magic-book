@@ -115,7 +115,9 @@ custom_channels:
 
 ```text
 envs_dirs:
-  - E:/data/miniconda3/envs
+  - E:/Data/miniconda3/envs
+pkgs_dirs:
+  - E:/Data/miniconda3/pkgs
 channels:
   - http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
   - http://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
