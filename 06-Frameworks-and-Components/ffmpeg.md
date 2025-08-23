@@ -21,12 +21,6 @@ https://ffmpeg.org/about.html
 
 ### 方法一：使用 FFmpeg + OpenAI Whisper
 
-+ 安装必要的工具
-```shell
-# 安装
-pip install openai-whisper
-```
-
 + 使用 FFmpeg 预处理音频（可选但推荐）
 
 ```shell
@@ -42,7 +36,22 @@ ffmpeg -i input_video.mp4 -vn -acodec pcm_s16le -ar 16000 -ac 1 output_audio.wav
 + 使用 Whisper 进行语音识别
 
 ```shell
+# 安装
+pip install openai-whisper
+# 使用显卡直接管道处理
+whisper output_audio.wav --language zh --device cuda  --output_format txt | tee output.txt
+# 使用显卡处理
+# 转换
 whisper output_audio.wav --model base --language zh
+# 打印控制台并输出到文档
+whisper output_audio.wav --model base --language Chinese --model base > output_text.txt
+# 将繁体字转换成简体字
+conda install -c conda-forge opencc 
+# 使用pip直接下载的opencc-python 无法在命令行中使用
+# pip install opencc # python -c "import opencc; print('OpenCC 已成功安装')"
+opencc -i output_text.txt -o output_text_simplified.txt -c t2s
+# 全程管道处理
+whisper output_audio.wav --language zh --output_format txt | opencc -c t2s | tee output.txt
 ```
 
 + 更高效的“一站式”命令（跳过生成音频文件）
