@@ -17,14 +17,16 @@ https://ffmpeg.org/about.html
 
 # 使用场景
 
-## 快速切割视频
+## 快速切割合并视频
 
-+ https://zhuanlan.zhihu.com/p/567582170
++ 切割文件 https://zhuanlan.zhihu.com/p/567582170
++ 合并文件 https://www.moonfly.net/archives/145.html
 
 ```shell
 # -ss 开始帧 -t 时长 -to 结束帧 -告诉 FFmpeg 复制音频和视频而不执行重新编码——这非常快！
 ffmpeg -ss 00:00:00 -i 3.mp4 -t 01:18:00 -c:v copy -c:a copy  trim_ipseek_copy1.mp4
-ffmpeg -ss 01:18:00 -i 3.mp4 -t0 01:18:00 -c:v copy -c:a copy  trim_ipseek_copy2.mp4
+ffmpeg -i 3.mp4 -ss 01:23:30 -to 03:00:00 -c:v copy -c:a copy  trim_ipseek_copy2.mp4
+ffmpeg -i trim_ipseek_copy1.mp4 -i trim_ipseek_copy2.mp4 -filter_complex "[0:v][0:a][1:v][1:a]concat=n=2:v=1:a=1[v][a]" -map "[v]" -map "[a]" output.mp4
 ```
 
 ## 提取音频中的文字
