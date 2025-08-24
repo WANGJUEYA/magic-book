@@ -92,6 +92,7 @@ conda config --set show_channel_urls yes # windows 生成 .condarc 文件配置
 conda clean -i # 配置完成后，清理索引缓存
 conda config --show channels # 展示所有镜像源
 conda clean --all  # 清理所有缓存
+conda init powershell # powershell启动初始化环境，解决cursor切换环境失败问题
 ```
 
 + 用户目录下 .condarc 文件配置
@@ -250,6 +251,8 @@ uv cache dir
 export UV_CACHE_DIR=/path/to/custom_cache
 # Windows（PowerShell）: 临时设置
 $env:UV_CACHE_DIR = "E:\data\uv\cache"
+# 设置uv镜像源
+$env:UV_INDEX_URL="https://pypi.tuna.tsinghua.edu.cn/simple/";
 ```
 
 + 基本使用 https://hellowac.github.io/uv-zh-cn/getting-started/installation/

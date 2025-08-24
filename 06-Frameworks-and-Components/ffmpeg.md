@@ -17,6 +17,16 @@ https://ffmpeg.org/about.html
 
 # 使用场景
 
+## 快速切割视频
+
++ https://zhuanlan.zhihu.com/p/567582170
+
+```shell
+# -ss 开始帧 -t 时长 -to 结束帧 -告诉 FFmpeg 复制音频和视频而不执行重新编码——这非常快！
+ffmpeg -ss 00:00:00 -i 3.mp4 -t 01:18:00 -c:v copy -c:a copy  trim_ipseek_copy1.mp4
+ffmpeg -ss 01:18:00 -i 3.mp4 -t0 01:18:00 -c:v copy -c:a copy  trim_ipseek_copy2.mp4
+```
+
 ## 提取音频中的文字
 
 ### 方法一：使用 FFmpeg + OpenAI Whisper
