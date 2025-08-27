@@ -11,7 +11,7 @@ date: 2022-10-15 14:37:24
 
 ## 常用命令
 
-# 按类型合并文件
+### 按类型合并文件
 
 ```bash
 dir
@@ -53,4 +53,14 @@ tree >> ../tree.txt
 
 ```bash
 rmdir /s /q 文件夹名
+```
+
+### 测试远端端口并发送文件
+
+```shell
+telnet ip port
+# 使用 ctrl + ] 进入命令行页面
+# 输入字符串可发送命令
+# https://learn.microsoft.com/zh-cn/windows-server/administration/windows-commands/telnet-send
+sen {ao | ayt | brk | esc | ip | synch | <string>} [?]
 ```
