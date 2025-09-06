@@ -71,6 +71,8 @@ conda activate chatglm # 激活新创建的环境; conda deactivate # 退出当�
 nvidia-smi # 查询显存大小，至少需要4.3G显存(window默认使用 GPU专用内存)
 # 当前系统查询出来 CUDA版本为 11.6；前往历史版本下载对应的环境版本
 conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia
+# 当前系统查询出来 CUDA版本为 12.3；前往历史版本下载对应的环境版本 https://pytorch.org/get-started/previous-versions/
+pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu126
 # 当conda下载速度过慢，使用pip直接下载
 pip install torch==1.13.1+cu116 torchvision==0.14.1+cu116 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu116
 # Err:  HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Read timed out

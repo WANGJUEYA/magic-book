@@ -27,6 +27,9 @@ https://ffmpeg.org/about.html
 ffmpeg -ss 00:00:00 -i 3.mp4 -t 01:18:00 -c:v copy -c:a copy  trim_ipseek_copy1.mp4
 ffmpeg -i 3.mp4 -ss 01:23:30 -to 03:00:00 -c:v copy -c:a copy  trim_ipseek_copy2.mp4
 ffmpeg -i trim_ipseek_copy1.mp4 -i trim_ipseek_copy2.mp4 -filter_complex "[0:v][0:a][1:v][1:a]concat=n=2:v=1:a=1[v][a]" -map "[v]" -map "[a]" output.mp4
+## 硬件加速  NVIDIA  -c:v h264_nvenc  | -c:v  hevc_nvenc 
+ffmpeg -encoders | findstr hevc # ffmpeg -encoders | grep hevc
+ffmpeg -i trim_ipseek_copy1.mp4 -i trim_ipseek_copy2.mp4 -filter_complex "[0:v][0:a][1:v][1:a]concat=n=2:v=1:a=1[v][a]" -map "[v]" -map "[a]" -c:v h264_nvenc -c:a aac output.mp4
 ```
 
 ## 提取音频中的文字
